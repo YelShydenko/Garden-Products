@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
+import "./HomePage.scss";
+import SaleForm from "../../Components/SaleForm/SaleForm";
 
 const HomePage = () => {
+ 
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <main>
+      <SaleForm/>
+    </main>
+  );
+};
 
-export default HomePage
+export default HomePage;
