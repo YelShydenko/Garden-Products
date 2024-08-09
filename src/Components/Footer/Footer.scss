@@ -1,0 +1,115 @@
+.container{
+    background-color: #FFFFF1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 80px 40px;
+    color:#424436;
+ }
+ 
+ .title>p{
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 70.4px;
+ }
+ .card_items{
+    display: grid;
+    grid-template-columns: 780px 548px;
+    gap: 32px;
+ }
+ .card_items>div{
+    background-color: #F2F6D3;
+    padding: 32px 32px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+ }
+ .card_items>div>p:first-child{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    color: #8B8B8B;
+ }
+ .card_items>div>p:last-child{
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 44px;
+ }
+ .card_items>iframe{
+    width: 1360px;
+    height: 350px;
+    border-radius: 10px;
+ }
+ .images{
+    display: flex;
+    gap: 18px;
+ }
+ 
+ 
+ @media (max-width: 1000px) {
+    .container{
+       gap: 32px;
+       padding: 60px 20px;
+    }
+    .card_items{
+       grid-template-columns: repeat(2, 470px);
+       gap: 20px;
+    }
+    .card_items>iframe{
+       width: 960px;
+       height: 250px;
+    }
+    .images{
+       gap: 16px;
+    }
+ }
+ @media (max-width: 768px) {
+    .card_items{
+       grid-template-columns: 479px 229px;
+       gap: 20px;
+    }
+    .card_items>iframe{
+       width: 728px;
+    }
+ }
+ @media (max-width: 480px) {
+    .container{
+       gap: 24px;
+       padding: 56px 20px;
+    }
+    .card_items{
+       grid-template-columns: 440px;
+       gap: 12px;
+    }
+    .card_items>iframe{
+       width: 440px;
+    }
+    .card_items>div{
+       padding: 24px 20px;
+       gap: 12px;
+    }
+    .card_items>div>p:first-child{
+       font-size: 18px;
+       line-height: 23.4px;
+    }
+    .card_items>div>p:last-child{
+       font-size: 28px;
+       line-height: 30.8px;
+    }
+    .title>p{
+       font-size: 40px;
+       line-height: 44px;
+    }
+ }
+ @media (max-width: 360px) {
+    .card_items{
+       grid-template-columns: 320px;
+    }
+    .card_items>iframe{
+       width: 320px;
+    }
+    .container{
+       padding-top: 100px;
+    }
+ }
