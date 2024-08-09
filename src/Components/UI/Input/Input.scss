@@ -1,0 +1,24 @@
+.input {
+  padding: 16px 32px;
+  font-size: 20px;
+  border-radius: 6px;
+  border: 1px solid;
+}
+
+.sale__form-control {
+  background: none;
+  border-color: #ffffff;
+  width: 100%;
+  &::placeholder {
+    color: #ffffff;
+  }
+}
+
+.order__form-control {
+   background-color: #ffffff;
+   border-color: #dddddd;
+   width: 100%;
+   &::placeholder {
+    color: #8b8b8b;
+  }
+}
