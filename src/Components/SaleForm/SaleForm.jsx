@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./SaleForm.scss";
+import Input from "../UI/Input/Input";
 
 const SaleForm = () => {
+  const [submitMessage, setSubmitMessage] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -11,8 +14,12 @@ const SaleForm = () => {
   } = useForm();
 
   const onSubmit = () => {
-    reset();
+    setSubmitMessage("The discount has been successfully sent by email"); // Текст сообщения при удачной отправки формы
+    reset(); // Обнуление формы после подтверждения
   };
+
+  // Определяем, есть ли какие-либо ошибки
+  const hasErrors = Object.keys(errors).length > 0;
 
   return (
     <section className="sale__form-section">
@@ -22,60 +29,54 @@ const SaleForm = () => {
         <form className="sale__form" onSubmit={handleSubmit(onSubmit)}>
           <div className="sale__form-inputs">
             <div className="input__container">
-              <input
-                type="text"
-                placeholder="Name"
-                className={`form-control ${
-                  errors.name ? "form-control-danger" : ""
-                }`}
-                {...register("name", {
+              <Input
+                typeName="text"
+                placeholderName="Name"
+                formClass="sale__form-control"
+                registerData={register("name", {
+                  // Регистрируем инпут с именем
                   required: "Name is required",
                 })}
               />
-
-              {errors.name && (
-                <p className="error-message">{errors.name.message}</p>
-              )}
             </div>
 
             <div className="input__container">
-              <input
-                type="text"
-                placeholder="Phone number"
-                className={`form-control ${
-                  errors.phone ? "form-control-danger" : ""
-                }`}
-                {...register("phone", {
+              <Input
+                typeName="text"
+                placeholderName="Phone number"
+                formClass="sale__form-control"
+                registerData={register("phone", {
+                  // Регистрируем инпут с телефоном
                   required: "Phone number is required",
                   pattern: {
-                    value: /^\d+$/,
-                    message: "Phone number is invalid",
+                    value: /^\d+$/, // Проверяем телефон
+                    message: "Wrong input. Try again",
                   },
                 })}
               />
-
-              {errors.phone && (
-                <p className="error-message">{errors.phone.message}</p>
-              )}
             </div>
             <div className="input__container">
-              <input
-                type="email"
-                placeholder="Email"
-                className={`form-control ${
-                  errors.email ? "form-control-danger" : ""
-                }`}
-                {...register("email", {
+              <Input
+                typeName="email"
+                placeholderName="Email"
+                formClass="sale__form-control"
+                registerData={register("email", {
+                  // Регистрируем инпут с почтой
                   required: "Email address is required",
                   pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: "Invalid email address",
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, // Проверяем почту
+                    message: "Wrong input. Try again",
                   },
                 })}
               />
 
-              {errors.email && (
-                <p className="error-message">{errors.email.message}</p>
+              {/* Если есть ошибки, выводим сообщение */}
+              {hasErrors && (
+                <p className="error-message">Wrong input. Try again</p>
+              )}
+              {/* Сообщение при успешном заполнении формы */}
+              {submitMessage && (
+                <p className="submit__message">{submitMessage}</p>
               )}
             </div>
           </div>
