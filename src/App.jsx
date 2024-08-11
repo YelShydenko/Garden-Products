@@ -3,11 +3,13 @@ import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import HomePage from "./pages/HomePage/HomePage";
 import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
+import { ThemeProvider } from './ThemeContext/ThemeContext';
 
 function App() {
   return (
     <>
-      <Header />
+     <ThemeProvider>
+  <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/categories" element={<CategoriesPage />} />
@@ -19,6 +21,7 @@ function App() {
         {/* <Route path="/error" element={ } /> */}
       </Routes>
       <Footer />
+      </ThemeProvider>
     </>
   );
 }
