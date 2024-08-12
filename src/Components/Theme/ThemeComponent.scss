@@ -1,0 +1,72 @@
+.header {
+  .toggle__theme {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+
+    .toggle-label {
+      display: block;
+      width: 60px;
+      height: 32px;
+      border-radius: 30px;
+      background-color: #8B8B8B;
+      cursor: pointer;
+      position: relative;
+
+      .header.dark & {
+        background-color: #444444;
+      }
+    }
+
+    .toggle-label::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: #FFFFFF;
+    }
+
+    #toggle-btn {
+      display: none;
+    }
+
+    // передвигает наш кружок для смены темы
+    #toggle-btn:checked + .toggle-label::before {
+      transform: translateX(28px);
+    }
+
+    // .header.dark #toggle-btn:checked + .toggle-label::before {
+    //   background-color: #8B8B8B;
+    //   z-index: 1;
+    // }
+  }
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: white;
+    pointer-events: none;
+
+    &.sun-icon {
+      left: 10px;
+    }
+
+    &.moon-icon {
+      right: 10px;
+    }
+  }
+
+  &.light .icon {
+    color: #000000;
+  }
+
+  &.dark .icon {
+    color: #ffffff;
+  }
+}
