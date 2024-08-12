@@ -1,0 +1,37 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных
+
+.btn {
+  border: none;
+  border-radius: nav.$radius-small;
+  white-space: nowrap;
+}
+.green {
+  background-color: nav.$button-color-green;
+  color: nav.$font-lightColor;
+}
+.white {
+  background-color: nav.$button-color-white;
+  color: nav.$font-darkColor;
+}
+.neutral {
+  background: none;
+  border: 1px solid nav.$button-border-color;
+  color: nav.$dark-grey;
+}
+.M {
+  padding: 16px 56px;
+  font-size: nav.$common-text;
+}
+.L {
+  padding: 16px 20px;
+  width: 410px;
+  font-size: nav.$common-text;
+}
+.S {
+  padding: 8px 16px;
+  font-size: nav.$small-text;
+}
+.XS {
+  padding: 6px 16px;
+  font-size: nav.$small-text;
+}

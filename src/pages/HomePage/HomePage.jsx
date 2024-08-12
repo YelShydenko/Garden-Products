@@ -1,20 +1,19 @@
-import Banner from '../../Components/Banner/Banner'
-import React from "react";
 import "./HomePage.scss";
-import SaleForm from "../../Components/SaleForm/SaleForm";
-import CategoriesMainPage from "../../Components/CategoriesMainPage/CategoriesMainPage";
+import Banner from "@/Components/Banner/Banner";
+import SaleForm from "@/Components/SaleForm/SaleForm";
+import CategoriesMainPage from "@/Components/CategoriesMainPage/CategoriesMainPage";
+import SaleProducts from "@/Components/SaleProductsMainPage/SaleProductsMainPage";
 
 const HomePage = () => {
- 
   return (
-  <>
-     <Banner/>
-    <main>
-      <CategoriesMainPage/>
-      <SaleForm/>
-    </main>
-    </>
- 
+    <div className="container">
+      <Banner />
+      <main className="home__page-sections">
+        <CategoriesMainPage />
+        <SaleForm />
+        <SaleProducts />
+      </main>
+    </div>
   );
 };
 

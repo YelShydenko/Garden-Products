@@ -1,15 +1,4 @@
-// * нужно поместить в глобальные стили
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  list-style: none;
-  font-family: 'Montserrat', sans-serif; 
-  text-decoration: none;
-
-}
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных 
 
 .header {
   max-width: 1440px;
@@ -20,16 +9,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // padding: 0 20px;
 
   &.light {
-    background-color: #FFFFF1;
-    color: #000000;
+    background-color: nav.$bg-color-lightTheme;
+    color: nav.$font-darkColor;
   }
 
   &.dark {
-    background-color: #424436;
-    color: #ffffff;
+    background-color: nav.$bg-color-darkTheme;
+    color: nav.$font-lightColor;
   }
 
   .logo {
@@ -40,20 +28,18 @@
   .header__content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: center;
 
     .nav__menu {
       ul {
         display: flex;
         gap: 32px;
-        padding: 0;
         font-weight: 500;
 
         li {
           cursor: pointer;
           a {
-            color: #424436;
+            color: nav.$font-darkColor;
           }
         }
       }
@@ -68,19 +54,7 @@
   .icons {
     display: flex;
     gap: 15px;
-
-    svg {
-      font-size: 48px;
-    }
+    font-size: nav.$icons-size;
   }
 
-  .btn {
-    background-color: #92A134;
-    color: #FFFFFF;
-    border: 1px solid #92A134;
-    border-radius: 7px;
-    padding: 6px 16px;
-    font-size: 16px;
-    font-weight: 500;
-  }
 }

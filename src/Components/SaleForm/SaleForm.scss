@@ -1,3 +1,5 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных 
+
 .sale__form {
   display: flex;
   flex-direction: column;
@@ -12,15 +14,16 @@
     background: linear-gradient(80.46deg, #87933d -0.68%, #55610b 66.66%);
     padding: 32px 32px 0;
     max-width: 1360px;
-    border-radius: 12px;
+    border-radius: nav.$radius-big;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 24px;
+    margin-bottom: 108px;
     h3 {
-      font-size: 64px;
+      font-size: nav.$section-title;
       font-weight: 700;
-      color: #ffffff;
+      color: nav.$font-lightColor;
     }
   }
   &-container {
@@ -33,23 +36,23 @@
   .btn {
     padding: 16px 32px;
     width: 516px;
-    border-radius: 6px;
-    font-size: 20px;
+    border-radius: nav.$radius-small;
+    font-size: nav.$common-text;
     font-weight: 600;
-    background-color: #ffffff;
+    background-color: nav.$button-color-white;
     border: none;
     margin-bottom: 32px;
   }
   .error-message{
-    font-size: 16px;
+    font-size: nav.$small-text;
     font-weight: 500;
     color: #ff0000;
     margin-top: 8px;
   }
   .submit__message{
     margin-top: 8px;
-    color: #ffffff;
-    font-size: 16px;
+    color: nav.$font-lightColor;
+    font-size: nav.$small-text;
     font-weight: 500;
   }
 }

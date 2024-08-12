@@ -1,0 +1,7 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных 
+body{
+   background-color: nav.$bg-color-lightTheme;
+   .home__page-sections{
+      padding: 80px 40px;
+   }
+}

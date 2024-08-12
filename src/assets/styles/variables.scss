@@ -1,5 +1,41 @@
-// for light theme
-$font-blackColor-lightTheme: #424436;
-$font-whiteColor-lightTheme: #FFFFFF;
+// Цвет текста
+$font-darkColor: #424436;
+$font-lightColor: #FFFFFF;
 
-$bg-color-lightTheme: #DDDDDD;
+// Цвет фона
+$bg-color-lightTheme: #FFFFF1;
+$bg-color-darkTheme: #424436;
+$bg-color-white: #ffffff;
+
+// Цвет футера
+$footer-items-bg-light: #f2f6d3;
+$footer-items-bg-dark: #383a2c;
+
+//Цвет скидки
+$sale-color: #f26d22;
+
+// Цвет кнопки
+$button-color-green: #92A134;
+$button-color-white: #FFFFF1;
+$button-border-color: #dddddd;
+
+// Цвета акцентов
+$dark-grey: #8b8b8b;
+$light-grey: #dddddd;
+$white-color: #FFFFF1;
+$green-color: #92A134;
+
+//Радиусы
+$radius-small: 6px;
+$radius-big: 12px;
+
+//Размеры текста
+$main-big-title: 96px;
+$section-title: 64px;
+$common-text: 20px;
+$footer-info-text: 40px;
+$price-text: 40px;
+$small-text: 16px;
+
+//Размер иконок
+$icons-size: 48px;

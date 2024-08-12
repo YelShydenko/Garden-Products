@@ -1,0 +1,23 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных 
+
+.section{
+  &__header{
+    display: flex;
+    gap: 32px;
+     h3 {
+      font-size: nav.$section-title;
+      font-weight: 700;
+      color: nav.$font-darkColor;
+    }
+  }
+   &__divider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: nav.$light-grey;
+  }
+}
