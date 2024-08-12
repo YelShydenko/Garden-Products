@@ -8,10 +8,10 @@ const SectionDivider = ({ sectionTitle, linkToPage, pageTitle }) => {
       <h3>{sectionTitle}</h3>
       <div className="section__divider">
         <div className="section__line"></div>
-        <Button btnColor={'neutral'} btnSize={'S'} btnText={pageTitle}>
-          <Link to={linkToPage}>{pageTitle}</Link>
-          {/* Переход на страницу */}
-        </Button>
+        <Link to={linkToPage}>
+          <Button btnColor={"neutral"} btnSize={"S"} btnText={pageTitle} />
+        </Link>
+        {/* Переход на страницу */}
       </div>
     </div>
   );
