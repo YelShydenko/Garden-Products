@@ -1,0 +1,56 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных
+
+.header {
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  padding: 20px;
+  height: 128px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .header__content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    .nav__menu {
+      ul {
+        display: flex;
+        gap: 32px;
+        font-weight: 500;
+
+        li {
+          cursor: pointer;
+          .nav__menu-link {
+            color: nav.$font-darkColor;
+          }
+          .link-dark{
+           color: nav.$font-lightColor;
+          }
+        }
+      }
+    }
+
+    .button__discount {
+      margin-right: 20px;
+      margin-bottom: 12px;
+    }
+  }
+
+  .icons {
+    display: flex;
+    gap: 15px;
+    font-size: nav.$icons-size;
+  }
+  .icons-dark{
+     color: nav.$font-lightColor;
+  }
+}

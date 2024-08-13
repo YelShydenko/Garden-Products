@@ -1,0 +1,128 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных
+
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  color: nav.$font-darkColor;
+  margin-bottom: 80px;
+  width: 100%;
+  padding: 0 40px;
+}
+
+.title {
+  font-size: nav.$section-title;
+  font-weight: 700;
+  line-height: 70.4px;
+}
+.title-dark{
+  color: nav.$font-lightColor;
+}
+.card_items {
+  display: grid;
+  grid-template-columns: 780px 548px;
+  gap: 32px;
+}
+.footer__item {
+  background-color: nav.$footer-items-bg-light;
+  padding: 32px 32px;
+  border-radius: nav.$radius-big;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item-dark{
+  background-color: nav.$footer-items-bg-dark;
+  color: nav.$font-lightColor;
+}
+
+.footer__item > p:first-child {
+  font-size: nav.$common-text;
+  font-weight: 500;
+  line-height: 26px;
+  color: nav.$dark-grey;
+}
+.footer__item > p:last-child {
+  font-size: nav.$footer-info-text;
+  font-weight: 600;
+  line-height: 44px;
+}
+.card_items > iframe {
+  width: 1360px;
+  height: 350px;
+  border-radius: nav.$radius-big;
+  border: none;
+}
+.images {
+  display: flex;
+  gap: 18px;
+  .icon{
+    font-size: nav.$footer-icon-size;
+  }
+  .icon-dark{
+    color: nav.$white-color;
+  }
+}
+
+@media (max-width: 1000px) {
+  .footer__container {
+    gap: 32px;
+  }
+  .card_items {
+    grid-template-columns: repeat(2, 470px);
+    gap: 20px;
+  }
+  .card_items > iframe {
+    width: 960px;
+    height: 250px;
+  }
+  .images {
+    gap: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .card_items {
+    grid-template-columns: 479px 229px;
+    gap: 20px;
+  }
+  .card_items > iframe {
+    width: 728px;
+  }
+}
+@media (max-width: 480px) {
+  .footer__container {
+    gap: 24px;
+  }
+  .card_items {
+    grid-template-columns: 440px;
+    gap: 12px;
+  }
+  .card_items > iframe {
+    width: 440px;
+  }
+  .footer__item {
+    padding: 24px 20px;
+    gap: 12px;
+  }
+  .footer__item > p:first-child {
+    font-size: 18px;
+    line-height: 23.4px;
+  }
+  .footer__item > p:last-child {
+    font-size: 28px;
+    line-height: 30.8px;
+  }
+  .title > p {
+    font-size: 40px;
+    line-height: 44px;
+  }
+}
+@media (max-width: 360px) {
+  .card_items {
+    grid-template-columns: 320px;
+  }
+  .card_items > iframe {
+    width: 320px;
+  }
+}
