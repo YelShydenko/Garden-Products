@@ -1,35 +1,36 @@
-import React from 'react'
-import insta from '/images/ic-instagram.png'
-import whatsapp from '/images/ic-whatsapp.png'
+import { useContext } from 'react'
 import './Footer.scss'
+import { ThemeContext } from '@/ThemeContext/ThemeContext'
+import { RiInstagramFill, RiWhatsappFill } from 'react-icons/ri'
 
- const Footer = () => {
+const Footer = () => {
+  const { theme } = useContext(ThemeContext); // Передаем нашу тему
   return (
     <footer className="footer__container">
-      <div className="title">
+      <div className={`title title-${theme}`}>
         <p>Contact</p>
       </div>
       <div className="card_items">
-        <div>
+        <div className={`footer__item item-${theme}`}>
           <p>Phone</p>
           <p>+49 999 999 99 99</p>
         </div>
-        <div>
+        <div className={`footer__item item-${theme}`}>
           <p>Socials</p>
           <div className="images">
-            <a href="https://www.instagram.com/">
-              <img src={insta} alt="instagram" />
+            <a href="https://www.instagram.com/" >
+              <RiInstagramFill className={`icon icon-${theme}`} />
             </a>
             <a href="https://web.whatsapp.com/">
-              <img src={whatsapp} alt="whatsapp" />
+              <RiWhatsappFill className={`icon icon-${theme}`} />
             </a>
           </div>
         </div>
-        <div>
+        <div className={`footer__item item-${theme}`}>
           <p>Address</p>
           <p>Linkstraße 2, 8 OG, 10785, Berlin, Deutschland</p>
         </div>
-        <div>
+        <div className={`footer__item item-${theme}`}>
           <p>Working Hours</p>
           <p>24 hours a day</p>
         </div>

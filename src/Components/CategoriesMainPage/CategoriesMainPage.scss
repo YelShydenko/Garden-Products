@@ -29,5 +29,8 @@
       font-size: nav.$common-text;
       font-weight: 500;
     }
+    .dark{
+      color: nav.$font-lightColor;
+    }
   }
 }

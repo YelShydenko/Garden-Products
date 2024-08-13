@@ -4,10 +4,13 @@
   &__header{
     display: flex;
     gap: 32px;
-     h3 {
+     .section__title {
       font-size: nav.$section-title;
       font-weight: 700;
       color: nav.$font-darkColor;
+    }
+    .dark{
+      color: nav.$font-lightColor;
     }
   }
    &__divider {

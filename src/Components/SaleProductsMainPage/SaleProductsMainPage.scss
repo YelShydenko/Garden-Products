@@ -27,6 +27,10 @@
         border-bottom: 1px solid nav.$light-grey;
       }
 
+      .image-dark{
+        border-color: nav.$dark-grey;
+      }
+
       .discount__badge {
         background-color: nav.$sale-color;
         color: nav.$font-lightColor;
@@ -47,13 +51,14 @@
         flex-direction: column;
         gap: 10px;
         .icon {
-          font-size: 48px;
+          font-size: nav.$icons-size;
           background-color: nav.$white-color;
           color: nav.$font-darkColor;
           border-radius: nav.$radius-small;
           opacity: 80%;
           &:hover{
             background-color: nav.$green-color;
+            color: nav.$white-color;
             font-size: 55px;
             transition: 0.3s;
             opacity: 100%;
@@ -93,7 +98,16 @@
           font-weight: 500;
           text-decoration: line-through;
         }
+
+        .price-dark{
+          color: nav.$font-lightColor;
+        }
       }
+    }
+    .dark{
+      background-color: nav.$bg-color-dark;
+      color: nav.$font-lightColor;
+      border-color: nav.$dark-grey;
     }
   }
 }

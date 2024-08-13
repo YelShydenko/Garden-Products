@@ -21,3 +21,15 @@ a{
   max-width: 1440px;
   margin: 0 auto;
 }
+
+body {
+  &.light-theme {
+    background-color: nav.$bg-color-lightTheme;
+    transition: 0.3s linear;
+  }
+
+  &.dark-theme {
+    background-color: nav.$bg-color-darkTheme;
+    transition: 0.3s linear;
+  }
+}
