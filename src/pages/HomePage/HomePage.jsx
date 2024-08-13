@@ -6,14 +6,14 @@ import SaleProductsMainPage from "@/Components/SaleProductsMainPage/SaleProducts
 
 const HomePage = () => {
   return (
-    <div className="container">
+    <>
       <Banner />
       <main className="home__page-sections">
         <CategoriesMainPage />
         <SaleForm />
         <SaleProductsMainPage />
       </main>
-    </div>
+    </>
   );
 };
 
