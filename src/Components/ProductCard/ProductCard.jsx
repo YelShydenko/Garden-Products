@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../../ThemeContext/ThemeContext";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { Link } from "react-router-dom";
 import "./ProductCard.scss";
 
 const ProductCard = ({ product }) => {
@@ -28,17 +29,21 @@ const ProductCard = ({ product }) => {
           <span className="discount__badge">{`-${discountPercentage}%`}</span>
         )}
       </div>
-      <div className="product__info">
-        <h3 className="product__name">{product.title}</h3>
-        <div className="product__pricing">
-          <span className={`product__price price-${theme}`}>
-            ${product.discont_price.toFixed(2)}
-          </span>
-          {product.discont_price && product.discont_price > 0 && (
-            <span className="original__price">${product.price.toFixed(2)}</span>
-          )}
+      <Link to={`/products/${product.id}`}>
+        <div className="product__info">
+          <h3 className="product__name">{product.title}</h3>
+          <div className="product__pricing">
+            <span className={`product__price price-${theme}`}>
+              ${product.discont_price.toFixed(2)}
+            </span>
+            {product.discont_price && product.discont_price > 0 && (
+              <span className="original__price">
+                ${product.price.toFixed(2)}
+              </span>
+            )}
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
