@@ -28,7 +28,7 @@ const SaleProducts = () => {
     .slice(0, 4);
 
   return (
-    <div className="sale__products-container">
+    <section className="sale__products-container">
       <SectionDivider
         sectionTitle={"Sale"}
         linkToPage={"/sale/products/all"}
@@ -69,7 +69,7 @@ const SaleProducts = () => {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
 
