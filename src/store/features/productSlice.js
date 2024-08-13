@@ -23,7 +23,7 @@ export const fetchProducts = createAsyncThunk(
     );
 
     const data = await res.json();
-    
+
     return data;
   }
 );
@@ -31,6 +31,7 @@ export const fetchProducts = createAsyncThunk(
 const initialState = {
   products: [],
   categories: [],
+  sale: [],
   filteredProducts: [],
   product: null,
   cart: [],
@@ -62,6 +63,11 @@ export const productSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.loading = false;
         state.products = action.payload;
+
+        state.sale = state.products.filter(
+          // Фильтрация товаров со скидкой
+          (product) => product.discont_price !== null
+        );
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;

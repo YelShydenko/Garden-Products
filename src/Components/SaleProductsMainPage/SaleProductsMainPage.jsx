@@ -9,21 +9,16 @@ import { ThemeContext } from "@/ThemeContext/ThemeContext";
 
 const SaleProducts = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.products); // выбираем наш массив с товарами
+  const sale = useSelector((state) => state.products.sale); // выбираем наш массив с товарами со скидкой
   const { theme } = useContext(ThemeContext); // Передаем нашу тему
 
   useEffect(() => {
     // вызов фетча всех товаров
     dispatch(fetchProducts());
   }, [dispatch]);
-
-  // Фильтруем, чтобы были только товары со скидкой
-  const saleProducts = products.filter(
-    (product) => product.discont_price !== null
-  );
-
+  
   // Перемешиваем массив и выбираем 4 случайных товара
-  const shuffledProducts = saleProducts
+  const shuffledProducts = [...sale]
     .sort(() => 0.5 - Math.random())
     .slice(0, 4);
 
