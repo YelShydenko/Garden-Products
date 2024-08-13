@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./SaleForm.scss";
 import Input from "../UI/Input/Input";
+import Button from "../UI/Button/Button";
 
 const SaleForm = () => {
   const [submitMessage, setSubmitMessage] = useState("");
@@ -80,9 +81,7 @@ const SaleForm = () => {
               )}
             </div>
           </div>
-          <button type="submit" className="btn">
-            Get a discount
-          </button>
+          <Button type="submit" btnColor={'white'} btnSize={'L'} btnText={'Get a discount'} />
         </form>
       </div>
     </section>

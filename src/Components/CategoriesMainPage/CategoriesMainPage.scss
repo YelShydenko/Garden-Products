@@ -1,61 +1,36 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных
+
 .categories {
-    &__content {
-      max-width: 1360px;
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
+  &__section {
+    margin-bottom: 80px;
+  }
+  &__content {
+    max-width: 1360px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    img {
+      max-width: 316px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: nav.$radius-big;
     }
-    &__header {
-      display: flex;
-      justify-content: space-between;
-  
-  
-      h3 {
-        font-size: 64px;
-        font-weight: 700;
-        color: #424436;
-      }
+    &-title {
+      font-size: nav.$common-text;
+      font-weight: 500;
     }
-      &__nav {
-          min-width: 967px;
-          display: flex;
-          align-items: center;
-      }
-    &__line {
-      width: 825px;
-      height: 1px;
-      background-color: #dddddd;
-    }
-    &__btn {
-      background: none;
-      padding: 8px 16px;
-      border: 1px solid #dddddd;
-      border-radius: 6px;
-      a {
-        color: #8b8b8b;
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: 500;
-      }
-    }
-    &__list {
-      display: flex;
-      justify-content: space-between;
-    }
-    &__item {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: center;
-      img {
-        max-width: 316px;
-        height: 350px;
-        object-fit: cover;
-        border-radius: 12px;
-      }
-      &-title {
-        font-size: 20px;
-        font-weight: 500;
-      }
+    .dark{
+      color: nav.$font-lightColor;
     }
   }
+}
