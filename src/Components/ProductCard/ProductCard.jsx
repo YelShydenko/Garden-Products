@@ -14,7 +14,7 @@ const ProductCard = ({ product }) => {
   );
 
   return (
-    <div className={`product__card ${theme}`}>
+    <div className={`product__card card-${theme}`}>
       <div className="product__image-container">
         <img
           src={`https://exam-server-5c4e.onrender.com${product.image}`}
@@ -31,7 +31,7 @@ const ProductCard = ({ product }) => {
       </div>
       <Link to={`/products/${product.id}`}>
         <div className="product__info">
-          <h3 className="product__name">{product.title}</h3>
+          <h3 className={`product__name name-${theme}`}>{product.title}</h3>
           <div className="product__pricing">
             <span className={`product__price price-${theme}`}>
               ${product.discont_price.toFixed(2)}

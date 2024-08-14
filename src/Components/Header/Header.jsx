@@ -14,7 +14,10 @@ const Header = () => {
     <header className="header">
       <div className="logo">
         <Link to={"/"}>
-          <img src="./images/logo.svg" alt="Logo" />
+          <img
+            src={`${import.meta.env.APP_WEB_URL}/images/logo.svg`}
+            alt="Logo"
+          />
         </Link>
         <ThemeComponent />
       </div>
@@ -60,7 +63,7 @@ const Header = () => {
           </ul>
         </div>
       </div>
-      <div className='icons'>
+      <div className="icons">
         <Link to={"/favorites"}>
           <IoMdHeartEmpty className={`icons-${theme}`} />
         </Link>

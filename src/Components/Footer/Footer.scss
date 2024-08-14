@@ -5,8 +5,6 @@
   flex-direction: column;
   gap: 40px;
   color: nav.$font-darkColor;
-  margin-bottom: 80px;
-  width: 100%;
   padding: 0 40px;
 }
 
@@ -20,7 +18,7 @@
 }
 .card_items {
   display: grid;
-  grid-template-columns: 780px 548px;
+  grid-template-columns: 2fr 1fr;
   gap: 32px;
 }
 .footer__item {
@@ -49,8 +47,9 @@
   line-height: 44px;
 }
 .card_items > iframe {
-  width: 1360px;
+  width: 100%;
   height: 350px;
+  grid-column: 1 / 3;
   border-radius: nav.$radius-big;
   border: none;
 }
@@ -65,37 +64,12 @@
   }
 }
 
-@media (max-width: 1000px) {
-  .footer__container {
-    gap: 32px;
-  }
-  .card_items {
-    grid-template-columns: repeat(2, 470px);
-    gap: 20px;
-  }
-  .card_items > iframe {
-    width: 960px;
-    height: 250px;
-  }
-  .images {
-    gap: 16px;
-  }
-}
-@media (max-width: 768px) {
-  .card_items {
-    grid-template-columns: 479px 229px;
-    gap: 20px;
-  }
-  .card_items > iframe {
-    width: 728px;
-  }
-}
 @media (max-width: 480px) {
   .footer__container {
     gap: 24px;
   }
   .card_items {
-    grid-template-columns: 440px;
+    grid-template-columns: 1fr;
     gap: 12px;
   }
   .card_items > iframe {
@@ -120,7 +94,7 @@
 }
 @media (max-width: 360px) {
   .card_items {
-    grid-template-columns: 320px;
+    grid-template-columns: 1fr;
   }
   .card_items > iframe {
     width: 320px;
