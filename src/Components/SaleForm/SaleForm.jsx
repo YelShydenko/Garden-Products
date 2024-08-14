@@ -26,7 +26,7 @@ const SaleForm = () => {
     <section className="sale__form-section">
       <h3>5% off on the first order</h3>
       <div className="sale__form-container">
-        <img src="./images/handsForm.png" alt="image" />
+        <img src="./images/handsForm.png" alt="image" className="sale__form-image" />
         <form className="sale__form" onSubmit={handleSubmit(onSubmit)}>
           <div className="sale__form-inputs">
             <div className="input__container">
@@ -81,7 +81,7 @@ const SaleForm = () => {
               )}
             </div>
           </div>
-          <Button type="submit" btnColor={'white'} btnSize={'L'} btnText={'Get a discount'} />
+          <Button type="submit" btnColor={'white'} btnText={'Get a discount'} btnSize={'L'} />
         </form>
       </div>
     </section>
