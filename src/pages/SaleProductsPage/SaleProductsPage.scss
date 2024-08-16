@@ -1,0 +1,67 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных 
+
+.sale__products-page{
+    padding: 40px 40px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    .breadcrumbs{
+        display: flex;
+        align-items: center;
+        &__linie{
+            height: 1px;
+            width: 16px;
+            background-color: nav.$light-grey;
+        }
+    }
+
+    .page__title{
+        font-size: nav.$section-title;
+        font-weight: 700;
+        color: nav.$font-darkColor;
+    }
+
+    .sort__filter-container{
+        display: flex;
+        gap: 40px;
+
+        .filter__by-price, .sort__by-price{
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            label{
+                font-weight: 600;
+                color: nav.$font-darkColor;
+            }
+        }
+
+        .filter__item{
+            padding: 8px 56px 8px 16px;
+            max-width: 112px;
+            background-color: nav.$bg-color-white;
+            border: 1px solid nav.$border-color-grey;
+            border-radius: nav.$radius-small;
+            &::placeholder {
+             color: nav.$font-greyColor;
+            }
+        }
+        
+        .sort__item{
+            padding: 8px 36px 8px 16px;
+            background-color: nav.$bg-color-white;
+            border: 1px solid nav.$border-color-grey;
+            border-radius: nav.$radius-small;
+            color: nav.$font-darkColor;
+        }
+
+        
+    }
+
+    .sale__product-list{
+        display: grid;
+        grid-template-columns:repeat(auto-fit, minmax(316px, 1fr));
+        gap: 32px;
+    }
+}
