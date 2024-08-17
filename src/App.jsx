@@ -5,6 +5,7 @@ import { ThemeProvider } from "./ThemeContext/ThemeContext";
 import Layout from "./Components/Layout/Layout";
 import SaleProductsPage from "./pages/SaleProductsPage/SaleProductsPage";
 
+
 function App() {
   return (
     <>

@@ -1,0 +1,29 @@
+@use "@/assets/styles/variables.scss" as nav; // Импорт для переменных
+
+.categories {
+    &__item {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+        text-align: center;
+
+        img {
+            max-width: 100%;
+            height: 350px;
+
+            border-radius: nav.$radius-big;
+        }
+
+        &-title {
+            font-size: nav.$common-text;
+            font-weight: 500;
+            margin-top: 16px;
+
+        }
+
+        .dark &-title {
+            color: nav.$font-lightColor;
+        }
+    }
+}
