@@ -1,17 +1,13 @@
 @use "@/assets/styles/variables.scss" as nav;
 
-
-ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 0 40px;
+.categories_product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(316px, 1fr));
+  gap: 32px;
 }
 
 .categories_title {
-font-weight: 700;
-font-size: 64px;
-color: nav.$font-darkColor;
-padding-left: 40px;
+  font-weight: 700;
+  font-size: nav.$section-title;
+  color: nav.$font-darkColor;
 }
-

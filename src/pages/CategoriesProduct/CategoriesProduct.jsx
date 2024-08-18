@@ -13,22 +13,18 @@ const { categoryId } = useParams(); // берем id категории из п�
 const products = useSelector((state) => state.products.products); //выбираем наш массив с продуктами
 const { categories } = useSelector((state) => state.products)
 
-
-
   useEffect(() => {
    dispatch(fetchProducts());
    dispatch(fetchCategories())
   }, [dispatch]);
- 
-  
-  
+
   const title = categories?.filter( (product) => product.id === +categoryId).find((product) => product.id === +categoryId)
   
 
   return (
     <>
-    <h1 className='categories_title'>{title?.title}</h1>
-    <ul>
+    <h3 className='categories_title'>{title?.title}</h3>
+    <div className='categories_product-list'>
         {
         products && products.map((product) => {
          if (String(product.categoryId) === String(categoryId)) { // переводим в один формат и даем условие показывать только те товары в которых совпадает categoryId
@@ -40,7 +36,7 @@ const { categories } = useSelector((state) => state.products)
             }
         })
       }
-    </ul>
+    </div>
   
     </>
   )
