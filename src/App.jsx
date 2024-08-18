@@ -4,6 +4,9 @@ import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
 import { ThemeProvider } from "./ThemeContext/ThemeContext";
 import Layout from "./Components/Layout/Layout";
 import CategoriesProduct from "./pages/CategoriesProduct/CategoriesProduct";
+import SaleProductsPage from "./pages/SaleProductsPage/SaleProductsPage";
+
+
 
 function App() {
   return (
@@ -13,8 +16,8 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/categories/all" element={<CategoriesPage />} />
-            {/* <Route path="/sale/products/all" element={} /> */}
              <Route path="/categories/:categoryId" element={<CategoriesProduct/> } /> 
+            <Route path="/sale/products/all" element={<SaleProductsPage/> } />
             {/* <Route path="/products/all" element={ } /> */}
             {/* <Route path="/products/:productId" element={ } /> */}
             {/* <Route path="/cart" element={ } /> */}
