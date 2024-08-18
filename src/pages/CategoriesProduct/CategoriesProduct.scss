@@ -1,0 +1,17 @@
+@use "@/assets/styles/variables.scss" as nav;
+
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 40px;
+}
+
+.categories_title {
+font-weight: 700;
+font-size: 64px;
+color: nav.$font-darkColor;
+padding-left: 40px;
+}
+

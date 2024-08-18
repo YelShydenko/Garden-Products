@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
 import { ThemeProvider } from "./ThemeContext/ThemeContext";
 import Layout from "./Components/Layout/Layout";
+import CategoriesProduct from "./pages/CategoriesProduct/CategoriesProduct";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="/categories/all" element={<CategoriesPage />} />
             {/* <Route path="/sale/products/all" element={} /> */}
-            {/* <Route path="/categories/:categoryId" element={} /> */}
+             <Route path="/categories/:categoryId" element={<CategoriesProduct/> } /> 
             {/* <Route path="/products/all" element={ } /> */}
             {/* <Route path="/products/:productId" element={ } /> */}
             {/* <Route path="/cart" element={ } /> */}
