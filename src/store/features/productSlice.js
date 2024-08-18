@@ -54,15 +54,22 @@ export const productSlice = createSlice({
         state.filteredProducts = data.sort((a, b) => a.price - b.price);
       } else if (payload.value === "high-to-low") {
         state.filteredProducts = data.sort((a, b) => b.price - a.price);
+      } else if (payload.value === "discount") {
+        state.filteredProducts = data.filter(
+          (product) => product.discont_price !== null
+        );
       } else {
         state.filteredProducts = data.sort((a, b) => a.id - b.id);
       }
     },
     filterByPrice: (state, { payload }) => {
-      const { minPrice, maxPrice } = payload;
+      const { minPrice, maxPrice, discount } = payload;
 
       state.filteredProducts = state.products.filter(
-        (item) => item.price >= minPrice && item.price <= maxPrice
+        (item) =>
+          item.price >= minPrice &&
+          item.price <= maxPrice &&
+          (!discount || item.discont_price !== null)
       );
     },
   },
@@ -97,5 +104,7 @@ export const productSlice = createSlice({
       });
   },
 });
+
+export const { sortBy, filterByPrice } = productSlice.actions;
 
 export default productSlice.reducer;

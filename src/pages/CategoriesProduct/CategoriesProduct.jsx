@@ -11,7 +11,11 @@ import FilterAndSort from '../../Components/FilterAndSort/FilterAndSort';
 function CategoriesProduct() {
 const dispatch = useDispatch();
 const { categoryId } = useParams(); // берем id категории из поисковика
-const products = useSelector((state) => state.products.products); //выбираем наш массив с продуктами
+const products = useSelector((state) =>
+  state.products.filteredProducts.length > 0
+    ? state.products.filteredProducts
+    : state.products.products
+); //выбираем наш массив с продуктами
 const { categories } = useSelector((state) => state.products)
 
   useEffect(() => {
