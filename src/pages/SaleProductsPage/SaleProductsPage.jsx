@@ -8,11 +8,19 @@ import FilterAndSort from "../../Components/FilterAndSort/FilterAndSort";
 
 const SaleProductsPage = () => {
   const dispatch = useDispatch();
-  const sale = useSelector((state) => state.products.sale); // вытаскиваем наш массив с продуктами по скидке
+  const products = useSelector((state) =>
+    state.products.filteredProducts.length > 0
+      ? state.products.filteredProducts
+      : state.products.products
+  ); //выбираем наш массив с продуктами или отфильтроваными продуктами
 
   useEffect(() => {
     dispatch(fetchProducts()); // вызываем наш фетч запрос на получения продуктов
   }, [dispatch]); // чтобы сработало один раз
+
+   const discountedProducts = products.filter(
+     (product) => product.discont_price !== null
+   ); // Фильтруем наши товары со скидкой 
 
   return (
     <main className="sale__products-page">
@@ -21,9 +29,15 @@ const SaleProductsPage = () => {
         <div className="breadcrumbs__linie"></div>
         <Button btnColor={"neutral"} btnSize={"XS"} btnText={"All sales"} />
       </div>
-      <FilterAndSort pageTitle={"Discounted items"} showDiscountFilter={false} />
+      <FilterAndSort // Компонент сортировки и фильтрации
+        pageTitle={"Discounted items"} 
+        showDiscountFilter={false}
+      />
       <section className="sale__product-list">
-        {sale && sale.map((product) => <ProductCard product={product} />)}
+        {discountedProducts &&
+          discountedProducts.map((product) => (
+            <ProductCard product={product} key={product.id} />
+          ))}
       </section>
     </main>
   );

@@ -7,15 +7,19 @@ import ProductCard from "../ProductCard/ProductCard";
 
 const SaleProducts = () => {
   const dispatch = useDispatch();
-  const sale = useSelector((state) => state.products.sale); // выбираем наш массив с товарами со скидкой
+  const products = useSelector((state) => state.products.products); // выбираем наш массив с товарами
 
   useEffect(() => {
     // вызов фетча всех товаров
     dispatch(fetchProducts());
   }, [dispatch]);
+
+  const discountedProducts = products.filter(
+    (product) => product.discont_price !== null
+  ); // Фильтруем наши товары со скидкой
   
   // Перемешиваем массив и выбираем 4 случайных товара
-  const shuffledProducts = [...sale]
+  const shuffledProducts = [...discountedProducts]
     .sort(() => 0.5 - Math.random())
     .slice(0, 4);
 

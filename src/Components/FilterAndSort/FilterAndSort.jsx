@@ -1,9 +1,11 @@
 import { useDispatch } from "react-redux";
 import "./FilterAndSort.scss";
-import { filterByPrice, sortBy } from "../../store/features/productSlice";
-import { useEffect, useState } from "react";
+import { filterByPrice, sortBy } from "@/store/features/productSlice";
+import { useContext, useEffect, useState } from "react";
+import { ThemeContext } from "@/ThemeContext/ThemeContext";
 
 const FilterAndSort = ({ pageTitle, showDiscountFilter = true }) => {
+  const { theme } = useContext(ThemeContext); // Выбор нашей темы
   const dispatch = useDispatch();
   const [minPrice, setMinPrice] = useState(""); // Храним минимальную цену для фильтрации
   const [maxPrice, setMaxPrice] = useState(""); // Храним максимальную цену для фильтрации
@@ -15,27 +17,27 @@ const FilterAndSort = ({ pageTitle, showDiscountFilter = true }) => {
   };
 
   // Автоматически применяем фильтр по цене или скидке при изменении minPrice, maxPrice или isDiscounted
-   useEffect(() => {
-     const min = minPrice !== "" ? Number(minPrice) : 0; // если не задано, минимум 0
-     const max = maxPrice !== "" ? Number(maxPrice) : Infinity; // если не задано, максимум бесконечность
+  useEffect(() => {
+    const min = minPrice !== "" ? Number(minPrice) : 0; // если не задано, минимум 0
+    const max = maxPrice !== "" ? Number(maxPrice) : Infinity; // если не задано, максимум бесконечность
 
-     // Вызываем фильтрацию по цене
-     dispatch(filterByPrice({ minPrice: min, maxPrice: max }));
+    // Вызываем фильтрацию по цене
+    dispatch(filterByPrice({ minPrice: min, maxPrice: max }));
 
-     // Если выбраны товары со скидкой, применяем соответствующую сортировку
-     if (isDiscounted) {
-       dispatch(sortBy({ value: "discount" }));
-     } else {
-       dispatch(sortBy({ value: "default" })); // Возвращаем сортировку по умолчанию
-     }
-   }, [minPrice, maxPrice, isDiscounted, dispatch]);
+    // Если выбраны товары со скидкой, применяем соответствующую сортировку
+    if (isDiscounted) {
+      dispatch(sortBy({ value: "discount" }));
+    } else {
+      dispatch(sortBy({ value: "default" })); // Возвращаем сортировку по умолчанию
+    }
+  }, [minPrice, maxPrice, isDiscounted, dispatch]);
 
   return (
     <div className="filter__sort-section">
-      <h3 className="page__title">{pageTitle}</h3>
+      <h3 className={`page__title title-${theme}`}>{pageTitle}</h3>
       <div className="sort__filter-container">
         <div className="filter__by-price">
-          <label>Price </label>
+          <label className={`price__label label-${theme}`}>Price</label>
           <input
             className="filter__item"
             type="text"
@@ -55,7 +57,7 @@ const FilterAndSort = ({ pageTitle, showDiscountFilter = true }) => {
         </div>
         {showDiscountFilter && ( // Возможность выбрать отображается ли фильтрация по скидке
           <div className="discount__filter">
-            <label className="discount__filter-check">
+            <label className={`discount__filter-check label-${theme}`}>
               Discounted items
               <input
                 type="checkbox"
@@ -67,7 +69,9 @@ const FilterAndSort = ({ pageTitle, showDiscountFilter = true }) => {
           </div>
         )}
         <div className="sort__by-price">
-          <label htmlFor="sort__by">Sorted</label>
+          <label htmlFor="sort__by" className={`sort__label label-${theme}`}>
+            Sorted
+          </label>
           <select
             className="sort__item"
             name="sort__by"
