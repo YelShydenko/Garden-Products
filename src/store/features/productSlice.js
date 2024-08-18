@@ -43,7 +43,29 @@ const initialState = {
 export const productSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    sortBy: (state, { payload }) => {
+      let data =
+        state.filteredProducts.length > 0
+          ? state.filteredProducts
+          : state.products;
+
+      if (payload.value === "low-to-high") {
+        state.filteredProducts = data.sort((a, b) => a.price - b.price);
+      } else if (payload.value === "high-to-low") {
+        state.filteredProducts = data.sort((a, b) => b.price - a.price);
+      } else {
+        state.filteredProducts = data.sort((a, b) => a.id - b.id);
+      }
+    },
+    filterByPrice: (state, { payload }) => {
+      const { minPrice, maxPrice } = payload;
+
+      state.filteredProducts = state.products.filter(
+        (item) => item.price >= minPrice && item.price <= maxPrice
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCategories.pending, (state) => {

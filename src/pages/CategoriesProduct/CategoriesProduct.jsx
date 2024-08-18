@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { fetchCategories, fetchProducts } from '../../store/features/productSlice';
 import ProductCard from '../../Components/ProductCard/ProductCard';
 import './CategoriesProduct.scss'
+import FilterAndSort from '../../Components/FilterAndSort/FilterAndSort';
 
 
 function CategoriesProduct() {
@@ -23,7 +24,7 @@ const { categories } = useSelector((state) => state.products)
 
   return (
     <>
-    <h3 className='categories_title'>{title?.title}</h3>
+    <FilterAndSort pageTitle={title?.title}/>
     <div className='categories_product-list'>
         {
         products && products.map((product) => {
