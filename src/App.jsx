@@ -4,6 +4,8 @@ import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
 import { ThemeProvider } from "./ThemeContext/ThemeContext";
 import Layout from "./Components/Layout/Layout";
 import SaleProductsPage from "./pages/SaleProductsPage/SaleProductsPage";
+import AllProducts from './pages/Products/AllProducts';
+
 
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="/categories/all" element={<CategoriesPage />} />
             <Route path="/sale/products/all" element={<SaleProductsPage/> } />
+            <Route path="/products/all" element={<AllProducts />} />
             {/* <Route path="/categories/:categoryId" element={} /> */}
             {/* <Route path="/products/all" element={ } /> */}
             {/* <Route path="/products/:productId" element={ } /> */}
