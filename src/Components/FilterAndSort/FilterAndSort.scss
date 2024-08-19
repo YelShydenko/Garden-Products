@@ -1,0 +1,86 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных
+
+.filter__sort-section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin: 40px 0;
+
+  .page__title {
+    font-size: nav.$section-title;
+    font-weight: 700;
+    color: nav.$font-darkColor;
+  }
+
+  .title-dark{
+    color: nav.$font-lightColor;
+  }
+
+  .sort__filter-container {
+    display: flex;
+    gap: 40px;
+
+    .filter__by-price,
+    .sort__by-price,
+    .discount__filter {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      .price__label, .discount__filter-check, .sort__label {
+        font-weight: 600;
+        color: nav.$font-darkColor;
+        font-size: nav.$common-text;
+      }
+
+      .label-dark{
+        color: nav.$font-lightColor;
+      }
+    }
+
+    .filter__item {
+      padding: 8px 56px 8px 16px;
+      max-width: 112px;
+      background-color: nav.$bg-color-white;
+      border: 1px solid nav.$border-color-grey;
+      border-radius: nav.$radius-small;
+      &::placeholder {
+        color: nav.$font-greyColor;
+      }
+    }
+
+    .discount__filter-check {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+
+      .discount__filter-check__item {
+        position: absolute;
+        cursor: pointer;
+        display: none;
+        opacity: 0;
+
+        &:checked ~ .checkmark {
+          background-color: nav.$sale-color;
+        }
+      }
+
+      .checkmark {
+        width: 36px;
+        height: 36px;
+        border: 1px solid nav.$border-color-grey;
+        background-color: nav.$bg-color-white;
+        border-radius: nav.$radius-small;
+      }
+    }
+
+    .sort__item {
+      padding: 8px 36px 8px 16px;
+      background-color: nav.$bg-color-white;
+      border: 1px solid nav.$border-color-grey;
+      border-radius: nav.$radius-small;
+      color: nav.$font-darkColor;
+    }
+  }
+}
