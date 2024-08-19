@@ -1,36 +1,25 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import {
-  fetchCategories,
-  fetchProducts,
-} from "../../store/features/productSlice";
-import ProductCard from "../../Components/ProductCard/ProductCard";
+import ProductCard from "@/Components/ProductCard/ProductCard";
 import "./CategoriesProduct.scss";
-import FilterAndSort from "../../Components/FilterAndSort/FilterAndSort";
+import FilterAndSort from "@/Components/FilterAndSort/FilterAndSort";
 
 function CategoriesProduct() {
-  const dispatch = useDispatch();
   const { categoryId } = useParams(); // берем id категории из поисковика
   const products = useSelector((state) =>
     state.products.filteredProducts.length > 0
       ? state.products.filteredProducts
       : state.products.products
   ); //выбираем наш массив с продуктами или отфильтроваными продуктами
-  const { categories } = useSelector((state) => state.products);
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-    dispatch(fetchCategories());
-  }, [dispatch]);
+  const { categories } = useSelector((state) => state.products); //выбираем наш массив с категориями
 
   const title = categories
     ?.filter((product) => product.id === +categoryId)
     .find((product) => product.id === +categoryId);
 
   return (
-    <>
+    <section className="categories_products-section">
       <FilterAndSort pageTitle={title?.title} />
       <div className="categories_product-list">
         {products &&
@@ -43,7 +32,7 @@ function CategoriesProduct() {
             }
           })}
       </div>
-    </>
+    </section>
   );
 }
 

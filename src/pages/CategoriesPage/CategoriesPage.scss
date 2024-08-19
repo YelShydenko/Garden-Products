@@ -2,26 +2,31 @@
 // стили порписывала через переменные из variables
 
 .categories {
-    &__section {
-        h2 {
-            font-size: nav.$section-title;
-            font-weight: 700;
-            color: nav.$font-darkColor;
-            margin-bottom: 40px;
-        }
-    }
-
-    &__content {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    &__list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
-        gap: 30px;
-    }
-
     
+  &__page-section {
+    padding: 0 40px;
+  }
+
+   &__section-title {
+      font-size: nav.$section-title;
+      font-weight: 700;
+      color: nav.$font-darkColor;
+      margin-bottom: 40px;
+    }
+
+    .title-dark {
+      color: nav.$font-lightColor;
+    }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+    gap: 30px;
+  }
 }

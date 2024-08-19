@@ -1,16 +1,13 @@
 @use "@/assets/styles/variables.scss" as nav; // импорт для переменных
 
-
 .product__card {
   background-color: nav.$bg-color-white;
   position: relative;
   border: 1px solid nav.$light-grey;
   border-radius: nav.$radius-big;
   overflow: hidden;
-  width: 316px;
-  height: 422px;
- border-radius: 12px;
- border: 1px solid nav.$border-color-grey;
+  border-radius: 12px;
+  border: 1px solid nav.$border-color-grey;
 
   .product__image {
     width: 100%;
@@ -46,10 +43,12 @@
 
     .icon {
       font-size: nav.$icons-size;
-      background-color: nav.$white-color;
-      color: nav.$font-darkColor;
-      border-radius: nav.$radius-small;
-      opacity: 80%;
+      color: nav.$font-lightColor;
+      stroke: nav.$font-darkColor; 
+      stroke-width: 20px;
+      &:hover {
+        color: nav.$font-darkColor;
+      }
     }
   }
 
@@ -96,7 +95,7 @@
   }
 }
 
-.img_buttonWrapper{
+.img_buttonWrapper {
   position: relative;
   border-bottom: 1px solid nav.$border-color-grey;
 }
@@ -119,7 +118,6 @@
   &:hover {
     background-color: nav.$bg-color-darkTheme;
   }
-
 }
 
 .card-dark {

@@ -1,18 +1,10 @@
-import { useEffect } from "react";
 import "./SaleProductsMainPage.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "@/store/features/productSlice";
+import { useSelector } from "react-redux";
 import SectionDivider from "../SectionDivider/SectionDivider";
 import ProductCard from "../ProductCard/ProductCard";
 
 const SaleProducts = () => {
-  const dispatch = useDispatch();
   const products = useSelector((state) => state.products.products); // выбираем наш массив с товарами
-
-  useEffect(() => {
-    // вызов фетча всех товаров
-    dispatch(fetchProducts());
-  }, [dispatch]);
 
   const discountedProducts = products.filter(
     (product) => product.discont_price !== null

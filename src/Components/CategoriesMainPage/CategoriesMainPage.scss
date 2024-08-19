@@ -9,9 +9,9 @@
     flex-direction: column;
     gap: 40px;
   }
-  &__list {
+  &__main-page__list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(316px, 1fr));
     gap: 32px;
   }
   &__item {

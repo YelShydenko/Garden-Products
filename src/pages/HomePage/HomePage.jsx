@@ -8,11 +8,11 @@ const HomePage = () => {
   return (
     <>
       <Banner />
-      <main className="home__page-sections">
+      <div className="home__page-sections">
         <CategoriesMainPage />
         <SaleForm />
         <SaleProductsMainPage />
-      </main>
+      </div>
     </>
   );
 };
