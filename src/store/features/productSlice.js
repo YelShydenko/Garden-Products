@@ -31,7 +31,6 @@ export const fetchProducts = createAsyncThunk(
 const initialState = {
   products: [],
   categories: [],
-  sale: [],
   filteredProducts: [],
   product: null,
   cart: [],
@@ -43,7 +42,36 @@ const initialState = {
 export const productSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    sortBy: (state, { payload }) => {
+      let data =
+        state.filteredProducts.length > 0
+          ? state.filteredProducts
+          : state.products;
+
+      if (payload.value === "low-to-high") {
+        state.filteredProducts = data.sort((a, b) => a.price - b.price);
+      } else if (payload.value === "high-to-low") {
+        state.filteredProducts = data.sort((a, b) => b.price - a.price);
+      } else if (payload.value === "discount") {
+        state.filteredProducts = data.filter(
+          (product) => product.discont_price !== null
+        );
+      } else {
+        state.filteredProducts = data.sort((a, b) => a.id - b.id);
+      }
+    },
+    filterByPrice: (state, { payload }) => {
+      const { minPrice, maxPrice, discount } = payload;
+
+      state.filteredProducts = state.products.filter(
+        (item) =>
+          item.price >= minPrice &&
+          item.price <= maxPrice &&
+          (!discount || item.discont_price !== null)
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCategories.pending, (state) => {
@@ -63,11 +91,6 @@ export const productSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.loading = false;
         state.products = action.payload;
-
-        state.sale = state.products.filter(
-          // Фильтрация товаров со скидкой
-          (product) => product.discont_price !== null
-        );
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
@@ -75,5 +98,7 @@ export const productSlice = createSlice({
       });
   },
 });
+
+export const { sortBy, filterByPrice } = productSlice.actions;
 
 export default productSlice.reducer;

@@ -1,24 +1,24 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных 
+
 .input {
   padding: 16px 32px;
-  font-size: 20px;
-  border-radius: 6px;
+  font-size: nav.$common-text;
+  border-radius: nav.$small-text;
   border: 1px solid;
 }
 
 .sale__form-control {
   background: none;
-  border-color: #ffffff;
-  width: 100%;
+  border-color: nav.$border-color-white;
   &::placeholder {
-    color: #ffffff;
+    color: nav.$font-lightColor;
   }
 }
 
 .order__form-control {
-   background-color: #ffffff;
-   border-color: #dddddd;
-   width: 100%;
+   background-color: nav.$bg-color-white;
+   border-color: nav.$border-color-grey;
    &::placeholder {
-    color: #8b8b8b;
+    color: nav.$font-greyColor;
   }
 }

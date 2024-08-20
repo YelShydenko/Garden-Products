@@ -1,0 +1,110 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных
+
+.filter__sort-section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  .page__title {
+    font-size: nav.$section-title;
+    font-weight: 700;
+    color: nav.$font-darkColor;
+  }
+
+  .title-dark {
+    color: nav.$font-lightColor;
+  }
+
+  .sort__filter-container {
+    display: flex;
+    gap: 40px;
+
+    .filter__by-price,
+    .sort__by-price,
+    .discount__filter {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      .price__label,
+      .discount__filter-check,
+      .sort__label {
+        font-weight: 600;
+        color: nav.$font-darkColor;
+        font-size: nav.$common-text;
+      }
+
+      .label-dark {
+        color: nav.$font-lightColor;
+      }
+    }
+
+    .filter__item {
+      padding: 8px 16px;
+      max-width: 112px;
+      background-color: nav.$bg-color-white;
+      border: 1px solid nav.$border-color-grey;
+      border-radius: nav.$radius-small;
+      font-size: nav.$small-text;
+      font-weight: 500;
+
+      &::placeholder {
+        color: nav.$font-greyColor;
+      }
+    }
+
+    .discount__filter-check {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+
+      .discount__filter-check__item {
+        position: absolute;
+        cursor: pointer;
+        display: none;
+        opacity: 0;
+
+        &:checked ~ .checkmark {
+          background-color: nav.$green-color;
+        }
+
+        &:checked ~ .checkmark::after {
+          display: block;
+        }
+      }
+
+      .checkmark {
+        width: 36px;
+        height: 36px;
+        border: 1px solid nav.$border-color-grey;
+        background-color: nav.$bg-color-white;
+        border-radius: nav.$radius-small;
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 10px;
+          top: 4px;
+          width: 11px;
+          height: 16px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+          display: none; 
+        }
+      }
+    }
+
+    .sort__item {
+      padding: 8px 36px 8px 16px;
+      background-color: nav.$bg-color-white;
+      border: 1px solid nav.$border-color-grey;
+      border-radius: nav.$radius-small;
+      color: nav.$font-darkColor;
+      font-size: nav.$small-text;
+      font-weight: 500;
+    }
+  }
+}

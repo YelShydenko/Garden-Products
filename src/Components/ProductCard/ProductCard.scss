@@ -1,0 +1,126 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных
+
+.product__card {
+  background-color: nav.$bg-color-white;
+  position: relative;
+  border: 1px solid nav.$light-grey;
+  border-radius: nav.$radius-big;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid nav.$border-color-grey;
+
+  .product__image {
+    width: 100%;
+    display: block;
+    height: 284px;
+    object-fit: cover;
+    border-bottom: 1px solid nav.$light-grey;
+  }
+
+  .image-dark {
+    border-color: nav.$dark-grey;
+  }
+
+  .discount__badge {
+    background-color: nav.$sale-color;
+    color: nav.$font-lightColor;
+    font-weight: 600;
+    font-size: nav.$common-text;
+    padding: 4px 8px;
+    border-radius: nav.$radius-small;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+  }
+
+  .product__image-icons {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .icon {
+      font-size: nav.$icons-size;
+      color: nav.$font-lightColor;
+      stroke: nav.$font-darkColor; 
+      stroke-width: 20px;
+      &:hover {
+        color: nav.$font-darkColor;
+      }
+    }
+  }
+
+  .product__info {
+    padding: 20px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .name-dark {
+      color: nav.$font-lightColor;
+    }
+  }
+
+  .product__name {
+    font-size: nav.$common-text;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .product__pricing {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+
+    .product__price {
+      font-size: nav.$price-text;
+      font-weight: 600;
+      color: nav.$font-darkColor;
+    }
+
+    .original__price {
+      font-size: nav.$common-text;
+      color: nav.$dark-grey;
+      font-weight: 500;
+      text-decoration: line-through;
+    }
+
+    .price-dark {
+      color: nav.$font-lightColor;
+    }
+  }
+}
+
+.img_buttonWrapper {
+  position: relative;
+  border-bottom: 1px solid nav.$border-color-grey;
+}
+
+.btn_addCard {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  width: 284px;
+  height: 58px;
+  padding: 16px 32px;
+  font-size: 20px;
+  font-weight: 600;
+  border-color: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: nav.$button-color-green;
+  color: nav.$font-lightColor;
+
+  &:hover {
+    background-color: nav.$bg-color-darkTheme;
+  }
+}
+
+.card-dark {
+  background-color: nav.$bg-color-dark;
+  border-color: nav.$dark-grey;
+}

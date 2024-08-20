@@ -3,21 +3,26 @@
 .sale__form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 100%;
+  
   &-inputs {
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding: 32px 0;
+    .input__container{
+      display: flex;
+      flex-direction: column;
+    }
   }
+
   &-section {
     background: linear-gradient(80.46deg, #87933d -0.68%, #55610b 66.66%);
     padding: 32px 32px 0;
-    max-width: 1360px;
     border-radius: nav.$radius-big;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    text-align: center;
     gap: 24px;
     margin-bottom: 108px;
     h3 {
@@ -26,29 +31,31 @@
       color: nav.$font-lightColor;
     }
   }
+
+ 
+
   &-container {
     display: flex;
     gap: 32px;
   }
-  .input__container{
-    width: 516px;
-  }
-  .btn {
-    padding: 16px 32px;
-    width: 516px;
-    border-radius: nav.$radius-small;
-    font-size: nav.$common-text;
-    font-weight: 600;
-    background-color: nav.$button-color-white;
-    border: none;
-    margin-bottom: 32px;
-  }
+
+  // .btn {
+  //   padding: 16px 32px;
+  //   border-radius: nav.$radius-small;
+  //   font-size: nav.$common-text;
+  //   font-weight: 600;
+  //   background-color: nav.$button-color-white;
+  //   border: none;
+  //   margin-bottom: 32px;
+  // }
+
   .error-message{
     font-size: nav.$small-text;
     font-weight: 500;
     color: #ff0000;
     margin-top: 8px;
   }
+
   .submit__message{
     margin-top: 8px;
     color: nav.$font-lightColor;
