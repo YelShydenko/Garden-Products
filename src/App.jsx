@@ -6,11 +6,18 @@ import Layout from "./Components/Layout/Layout";
 import CategoriesProduct from "./pages/CategoriesProduct/CategoriesProduct";
 import SaleProductsPage from "./pages/SaleProductsPage/SaleProductsPage";
 import AllProducts from './pages/Products/AllProducts';
-
-
-
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchCategories, fetchProducts } from "./store/features/productSlice";
 
 function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchCategories())
+    dispatch(fetchProducts())
+  }, [dispatch])
+  
   return (
     <>
       <ThemeProvider>

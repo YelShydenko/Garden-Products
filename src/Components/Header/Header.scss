@@ -4,8 +4,7 @@
   max-width: 1440px;
   margin: 0 auto;
   position: relative;
-  padding: 20px;
-  height: 128px;
+  padding: 30px 40px 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,9 +30,12 @@
           cursor: pointer;
           .nav__menu-link {
             color: nav.$font-darkColor;
+            &:hover{
+              color: nav.$green-color;
+            }
           }
-          .link-dark{
-           color: nav.$font-lightColor;
+          .link-dark {
+            color: nav.$font-lightColor;
           }
         }
       }
@@ -48,9 +50,17 @@
   .icons {
     display: flex;
     gap: 15px;
-    font-size: nav.$icons-size;
+    .icon-light {
+      font-size: nav.$icons-size;
+      fill: none;
+      stroke: nav.$font-darkColor;
+      stroke-width: 20px;
+    }
   }
-  .icons-dark{
-     color: nav.$font-lightColor;
+  .icon-dark {
+    font-size: nav.$icons-size;
+    fill: none;
+    stroke: nav.$white-color;
+    stroke-width: 20px;
   }
 }

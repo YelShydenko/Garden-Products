@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../ThemeContext/ThemeContext";
-import { IoMdHeartEmpty } from "react-icons/io";
-import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { ThemeContext } from "@/ThemeContext/ThemeContext";
 import { Link } from "react-router-dom";
 import "./ProductCard.scss";
+import { GiShoppingBag } from "react-icons/gi";
+import { IoMdHeart } from "react-icons/io";
 
 const ProductCard = ({ product }) => {
   const { theme } = useContext(ThemeContext);
@@ -26,8 +26,8 @@ const ProductCard = ({ product }) => {
           />
         </div>
         <div className="product__image-icons">
-          <IoMdHeartEmpty className="icon" />
-          <HiOutlineShoppingBag className="icon" />
+          <IoMdHeart className="icon" />
+          <GiShoppingBag className="icon" />
         </div>
         {product.discont_price && product.discont_price > 0 && (
           <span className="discount__badge">{`-${discountPercentage}%`}</span>

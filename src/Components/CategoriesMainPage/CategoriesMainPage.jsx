@@ -1,20 +1,13 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import "./CategoriesMainPage.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCategories } from "@/store/features/productSlice";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import SectionDivider from "../SectionDivider/SectionDivider";
 import { ThemeContext } from "@/ThemeContext/ThemeContext";
+import CategoryCard from "../CategoryCard/CategoryCard";
 
 const CategoriesMainPage = () => {
-  const dispatch = useDispatch();
   const categories = useSelector((state) => state.products.categories); // выбираем наш массив с категориями
   const { theme } = useContext(ThemeContext); // Передаем нашу тему
-
-  useEffect(() => {
-    //вызов фетча категорий
-    dispatch(fetchCategories());
-  }, [dispatch]);
 
   return (
     <section className="categories__section">
@@ -26,25 +19,17 @@ const CategoriesMainPage = () => {
         />
         {/* переход на страницу всех категорий */}
 
-        <div className="categories__list">
+        <div className="categories__main-page__list">
           {categories && // отрисовка категорий
-            categories.slice(0, 4).map((category) => (
-              <div key={category.id}>
-                <Link
-                  to={`/categories/${category.id}`}
-                  className="categories__item"
-                >
-                  <img
-                    className="categories__item-image"
-                    src={`https://exam-server-5c4e.onrender.com${category.image}`}
-                    alt={category.title}
-                  />
-                  <p className={`categories__item-title ${theme}`}>
-                    {category.title}
-                  </p>
-                </Link>
-              </div>
-            ))}
+            categories
+              .slice(0, 4)
+              .map((category) => (
+                <CategoryCard
+                  key={category.id}
+                  category={category}
+                  theme={theme}
+                />
+              ))}
         </div>
       </div>
     </section>

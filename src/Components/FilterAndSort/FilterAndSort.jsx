@@ -10,10 +10,11 @@ const FilterAndSort = ({ pageTitle, showDiscountFilter = true }) => {
   const [minPrice, setMinPrice] = useState(""); // Храним минимальную цену для фильтрации
   const [maxPrice, setMaxPrice] = useState(""); // Храним максимальную цену для фильтрации
   const [isDiscounted, setIsDiscounted] = useState(false); // Храним состояние чекбокса
+  const [select, setSelect] = useState("default");
 
   // Обработчик сортировки
   const handleSort = (e) => {
-    dispatch(sortBy({ value: e.target.value }));
+    setSelect(e.target.value);
   };
 
   // Автоматически применяем фильтр по цене или скидке при изменении minPrice, maxPrice или isDiscounted
@@ -30,7 +31,9 @@ const FilterAndSort = ({ pageTitle, showDiscountFilter = true }) => {
     } else {
       dispatch(sortBy({ value: "default" })); // Возвращаем сортировку по умолчанию
     }
-  }, [minPrice, maxPrice, isDiscounted, dispatch]);
+
+    dispatch(sortBy({ value: select }));
+  }, [minPrice, maxPrice, isDiscounted, select, dispatch]);
 
   return (
     <div className="filter__sort-section">
@@ -77,6 +80,7 @@ const FilterAndSort = ({ pageTitle, showDiscountFilter = true }) => {
             name="sort__by"
             id="sort__by"
             onChange={handleSort}
+            value={select}
           >
             <option value="default">by default</option>
             <option value="low-to-high">Price: Low to High</option>
