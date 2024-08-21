@@ -3,10 +3,8 @@
 .product__card {
   background-color: nav.$bg-color-white;
   position: relative;
-  border: 1px solid nav.$light-grey;
   border-radius: nav.$radius-big;
   overflow: hidden;
-  border-radius: 12px;
   border: 1px solid nav.$border-color-grey;
 
   .product__image {

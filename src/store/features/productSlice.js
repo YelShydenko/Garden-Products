@@ -44,11 +44,11 @@ export const productSlice = createSlice({
   initialState,
   reducers: {
     sortBy: (state, { payload }) => {
+      // Сортировка
       let data =
         state.filteredProducts.length > 0
           ? state.filteredProducts
           : state.products;
-
       if (payload.value === "low-to-high") {
         state.filteredProducts = data.sort((a, b) => a.price - b.price);
       } else if (payload.value === "high-to-low") {
@@ -62,8 +62,8 @@ export const productSlice = createSlice({
       }
     },
     filterByPrice: (state, { payload }) => {
+      // Фильтрация
       const { minPrice, maxPrice, discount } = payload;
-
       state.filteredProducts = state.products.filter(
         (item) =>
           item.price >= minPrice &&
@@ -71,6 +71,53 @@ export const productSlice = createSlice({
           (!discount || item.discont_price !== null)
       );
     },
+    addProductToCart: (state, { payload }) => {
+      // Добавление товара в корзину
+      let foundProduct = state.cart.find((item) => item.id === payload.id);
+      if (!foundProduct) {
+        state.cart.push({ ...payload, count: 1 });
+        localStorage.setItem("cart", JSON.stringify(state.cart));
+      }
+    },
+    incrementProduct: (state, { payload }) => {
+      // Увеличение к-ва товара
+      state.cart = state.cart.map((item) => {
+        if (item.id === payload) {
+          item.count += 1;
+        }
+        return item;
+      });
+      localStorage.setItem("cart", JSON.stringify(state.cart));
+    },
+    decrementProduct: (state, { payload }) => {
+      // Уменьшение к-ва товара
+      state.cart = state.cart
+        .map((item) => {
+          if (item.id === payload) {
+            item.count -= 1;
+            if (item.count === 0) {
+              return null;
+            }
+          }
+          return item;
+        })
+        .filter((item) => item);
+      localStorage.setItem("cart", JSON.stringify(state.cart));
+    },
+    removeProductFromCart: (state, { payload }) => {
+      // Убрать товар с корзины
+      state.cart = state.cart.filter((item) => item.id !== payload);
+      localStorage.setItem("cart", JSON.stringify(state.cart));
+    },
+    getProductFromLocalStorage: (state) => {
+      let cartStorage = JSON.parse(localStorage.getItem("cart"));
+
+      if (cartStorage) {
+        state.cart = [...cartStorage];
+      } else {
+        localStorage.setItem("cart", JSON.stringify([]));
+      }
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -99,6 +146,14 @@ export const productSlice = createSlice({
   },
 });
 
-export const { sortBy, filterByPrice } = productSlice.actions;
+export const {
+  sortBy,
+  filterByPrice,
+  addProductToCart,
+  incrementProduct,
+  decrementProduct,
+  removeProductFromCart,
+  getProductFromLocalStorage
+} = productSlice.actions;
 
 export default productSlice.reducer;

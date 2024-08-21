@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import "./ProductCard.scss";
 import { GiShoppingBag } from "react-icons/gi";
 import { IoMdHeart } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { addProductToCart } from "@/store/features/productSlice";
 
 const ProductCard = ({ product }) => {
   const { theme } = useContext(ThemeContext);
+  const dispatch = useDispatch();
 
   const discountPercentage = product.discont_price
     ? Math.round(
@@ -27,7 +30,10 @@ const ProductCard = ({ product }) => {
         </div>
         <div className="product__image-icons">
           <IoMdHeart className="icon" />
-          <GiShoppingBag className="icon" />
+          <GiShoppingBag
+            className="icon"
+            onClick={() => dispatch(addProductToCart(product))}
+          />
         </div>
         {product.discont_price && product.discont_price > 0 && (
           <span className="discount__badge">{`-${discountPercentage}%`}</span>
