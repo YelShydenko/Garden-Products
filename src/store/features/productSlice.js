@@ -109,15 +109,20 @@ export const productSlice = createSlice({
       state.cart = state.cart.filter((item) => item.id !== payload);
       localStorage.setItem("cart", JSON.stringify(state.cart));
     },
-    getProductFromLocalStorage: (state) => {
+    getCartFromLocalStorage: (state) => {
+      // Получить данные корзины с LocalStorae
       let cartStorage = JSON.parse(localStorage.getItem("cart"));
-
       if (cartStorage) {
         state.cart = [...cartStorage];
       } else {
         localStorage.setItem("cart", JSON.stringify([]));
       }
-    }
+    },
+    clearCart: (state) => {
+      // Очистить корзину и LocalStorage корзины 
+      state.cart = [];
+      localStorage.removeItem("cart");
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -153,7 +158,8 @@ export const {
   incrementProduct,
   decrementProduct,
   removeProductFromCart,
-  getProductFromLocalStorage
+  getCartFromLocalStorage,
+  clearCart
 } = productSlice.actions;
 
 export default productSlice.reducer;

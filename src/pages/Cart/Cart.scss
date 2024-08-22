@@ -1,32 +1,97 @@
-@use "@/assets/styles/variables.scss" as nav; // импорт для переменных 
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных
 
-.cart__page{
-   padding: 40px 40px 0;
-   display: flex;
-   flex-direction: column;
-   gap: 40px;
+.cart__page {
+  padding: 40px 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 
-   .cart__container{
-      display: flex;
-      gap: 32px;
+  .cart__container {
+    display: flex;
+    gap: 32px;
 
-      .cart__products-list{
-         display: flex;
-         flex-direction: column;
-         gap: 16px;
-      }
-   }
-
-   .empty__cart{
+    .cart__products-list {
       display: flex;
       flex-direction: column;
-      align-items: start;
-      gap: 32px;
-      &-info{
-         font-size: nav.$common-text;
+      gap: 16px;
+    }
+
+    .cart__form {
+      padding: 32px;
+      background-color: nav.$cart-form-bg-light;
+      font-size: nav.$cart-form-text;
+      color: nav.$font-greyColor;
+      font-weight: 500;
+      border-radius: nav.$radius-big;
+      height: 100%;
+      width: 100%;
+
+      .order__info {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        &-header {
+          color: nav.$font-darkColor;
+          font-weight: 700;
+        }
       }
-      .info-dark{
-         color: nav.$font-light-grey;
+
+      .total__price-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+
+        .total__price {
+          color: nav.$font-darkColor;
+          font-weight: 700;
+          font-size: nav.$cart-total-price-text;
+        }
       }
-   }
+
+      .order__form {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        margin-top: 32px;
+
+        .input__container {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          .order__error-message {
+            font-size: nav.$common-text;
+            color: nav.$error-color;
+          }
+        }
+      }
+    }
+
+    .form-dark {
+      background-color: nav.$cart-form-bg-dark;
+
+      .order__info-header {
+        color: nav.$font-lightColor;
+      }
+
+      .total__price-container {
+        .total__price {
+          color: nav.$font-lightColor;
+        }
+      }
+    }
+  }
+
+  .empty__cart {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 32px;
+    &-info {
+      font-size: nav.$common-text;
+    }
+    .info-dark {
+      color: nav.$font-light-grey;
+    }
+  }
 }

@@ -8,7 +8,7 @@ import SaleProductsPage from "./pages/SaleProductsPage/SaleProductsPage";
 import AllProducts from './pages/Products/AllProducts';
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchCategories, fetchProducts, getProductFromLocalStorage } from "./store/features/productSlice";
+import { fetchCategories, fetchProducts, getCartFromLocalStorage } from "./store/features/productSlice";
 import Cart from "./pages/Cart/Cart";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchCategories())
     dispatch(fetchProducts())
-    dispatch(getProductFromLocalStorage())
+    dispatch(getCartFromLocalStorage())
   }, [dispatch])
   
   return (

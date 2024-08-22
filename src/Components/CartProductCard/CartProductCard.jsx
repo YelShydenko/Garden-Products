@@ -8,10 +8,10 @@ import {
   decrementProduct,
   incrementProduct,
   removeProductFromCart,
-} from "../../store/features/productSlice";
+} from "@/store/features/productSlice";
 
 const CartProductCard = ({ product }) => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext); // Выбираем тему
   const dispatch = useDispatch();
   return (
     <div className="product__cart-card">
@@ -27,17 +27,19 @@ const CartProductCard = ({ product }) => {
           <h3 className="product-title">{product.title}</h3>
           <IoCloseOutline
             className="close__icon"
-            onClick={() => dispatch(removeProductFromCart(product.id))}
+            onClick={() => dispatch(removeProductFromCart(product.id))} // Чтобы удалить товар из корзины
           />
         </div>
         <div className="price__counter">
           <div className="cart__counter">
             <button className="counter__btn-icon">
-              <FiMinus onClick={() => dispatch(decrementProduct(product.id))} />
+              <FiMinus onClick={() => dispatch(decrementProduct(product.id))} // Уменьшить к-во товара
+              /> 
             </button>
             <span className="count">{product.count}</span>
             <button className="counter__btn-icon">
-              <FiPlus onClick={() => dispatch(incrementProduct(product.id))} />
+              <FiPlus onClick={() => dispatch(incrementProduct(product.id))} // Увеличить к-во товара
+              />
             </button>
           </div>
           {product.discont_price !== null && product.discont_price > 0 ? (

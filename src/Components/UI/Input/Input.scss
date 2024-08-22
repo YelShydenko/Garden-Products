@@ -3,7 +3,7 @@
 .input {
   padding: 16px 32px;
   font-size: nav.$common-text;
-  border-radius: nav.$small-text;
+  border-radius: nav.$radius-small;
   border: 1px solid;
 }
 
@@ -22,3 +22,7 @@
     color: nav.$font-greyColor;
   }
 }
+
+.input-dark{
+    background-color: nav.$bg-color-darkTheme;
+  }
