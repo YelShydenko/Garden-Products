@@ -4,9 +4,15 @@ import { Link } from "react-router-dom";
 import "./ProductCard.scss";
 import { GiShoppingBag } from "react-icons/gi";
 import { IoMdHeart } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
+import { addProductToCart } from "@/store/features/productSlice";
+import { removeProductFromCart } from "../../store/features/productSlice";
 
 const ProductCard = ({ product }) => {
   const { theme } = useContext(ThemeContext);
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.products.cart); // Получаем корзинy из productSlice
+  const isProductInCart = cart.some((item) => item.id === product.id); // Проверяем, есть ли товар в корзине
 
   const discountPercentage = product.discont_price
     ? Math.round(
@@ -14,6 +20,14 @@ const ProductCard = ({ product }) => {
         ((product.price - product.discont_price) / product.price) * 100
       )
     : 0;
+  
+  const handleCartToggle = () => {
+    if (isProductInCart) {
+      dispatch(removeProductFromCart(product.id)); // Удаляем товар из корзины
+    } else {
+      dispatch(addProductToCart(product)); // Добавляем товар в корзину
+    }
+  }
 
   return (
     <div className={`product__card card-${theme}`}>
@@ -27,7 +41,10 @@ const ProductCard = ({ product }) => {
         </div>
         <div className="product__image-icons">
           <IoMdHeart className="icon" />
-          <GiShoppingBag className="icon" />
+          <GiShoppingBag
+            className={`icon ${isProductInCart ? "icon__in-cart" : ""}`}
+            onClick={handleCartToggle}
+          />
         </div>
         {product.discont_price && product.discont_price > 0 && (
           <span className="discount__badge">{`-${discountPercentage}%`}</span>

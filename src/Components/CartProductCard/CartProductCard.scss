@@ -1,0 +1,110 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных
+
+.product__cart-card {
+  display: flex;
+  border-radius: nav.$radius-big;
+  border: 1px solid nav.$border-color-grey;
+  overflow: hidden;
+  background-color: nav.$bg-color-white;
+
+  .product__image-container {
+    border-right: 1px solid nav.$border-color-grey;
+    img {
+      width: 200px;
+      height: 190px;
+      object-fit: contain;
+      display: block;
+    }
+  }
+
+  .product__info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    padding: 32px;
+
+    &-title {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+
+      .product-title {
+        font-size: nav.$common-text;
+        font-weight: 500;
+        max-width: 476px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .close__icon {
+        font-size: nav.$cart-close-icon;
+        color: nav.$font-darkColor;
+      }
+    }
+
+    .price__counter {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+
+      .cart__counter {
+        display: flex;
+        align-items: center;
+        border: 1px solid nav.$border-color-grey;
+        border-radius: nav.$radius-small;
+        border-width: 1px 0 1px 0;
+
+        .counter__btn-icon {
+          padding: 17px;
+          font-size: 24px;
+          color: nav.$font-greyColor;
+          background: none;
+          border: 1px solid nav.$border-color-grey;
+          border-width: 0 1px 0 1px;
+          border-radius: nav.$radius-small;
+          display: flex;
+        }
+        .count {
+          padding: 16px 44px;
+          font-size: nav.$common-text;
+          font-weight: 600;
+        }
+      }
+
+      .product__pricing {
+        display: flex;
+        gap: 16px;
+        align-items: baseline;
+        .original__price {
+          text-decoration: line-through;
+          font-size: nav.$common-text;
+          color: nav.$font-greyColor;
+          font-weight: 500;
+        }
+      }
+      .product__price {
+        font-size: nav.$price-text;
+        font-weight: 600;
+        color: nav.$font-darkColor;
+      }
+      .price-dark {
+        color: nav.$font-lightColor;
+      }
+    }
+  }
+
+  .info-dark {
+    background-color: nav.$bg-color-dark;
+
+    .product-title {
+      color: nav.$font-lightColor;
+    }
+
+    .count{
+      color: nav.$font-lightColor;
+    }
+  }
+}

@@ -1,19 +1,20 @@
-@use "@/assets/styles/variables.scss" as nav; // импорт для переменных 
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных
 
-.section{
-  &__header{
+.section {
+  &__header {
     display: flex;
     gap: 32px;
-     .section__title {
+    .section__title {
       font-size: nav.$section-title;
       font-weight: 700;
       color: nav.$font-darkColor;
+      white-space: nowrap;
     }
-    .dark{
+    .dark {
       color: nav.$font-lightColor;
     }
   }
-   &__divider {
+  &__divider {
     width: 100%;
     display: flex;
     align-items: center;

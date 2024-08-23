@@ -1,0 +1,45 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных
+
+.modal__background {
+  background-color: nav.$bg-modalWindow;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  z-index: 2;
+
+  .modal__window {
+    background-color: nav.$bg-modalwindow-message;
+    border-radius: nav.$radius-big;
+    position: relative;
+    top: 260px;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 32px;
+    display: flex;
+    gap: 16px;
+
+    .modal__message {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      color: nav.$font-lightColor;
+      max-width: 424px;
+
+      .modal__message-header {
+        font-size: nav.$cart-form-text;
+      }
+      .modal__message-body {
+        font-size: nav.$common-text;
+      }
+    }
+
+    .modal__close-icon {
+      color: nav.$font-lightColor;
+      font-size: nav.$modal-close-icon;
+    }
+  }
+}
