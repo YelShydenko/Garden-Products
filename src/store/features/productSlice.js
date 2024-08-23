@@ -123,6 +123,24 @@ export const productSlice = createSlice({
       state.cart = [];
       localStorage.removeItem("cart");
     },
+    // Добавление или удаление товара из избранного
+  setFavourite: (state, { payload }) => {
+    let foundFavourite = state.favourite.find(item => item === payload);
+    if (foundFavourite) {
+      state.favourite = state.favourite.filter(item => item !== payload);
+    } else {
+      state.favourite.push(payload);
+    }
+    localStorage.setItem("favourite", JSON.stringify(state.favourite));
+  },
+
+  // Удаление товара из избранного
+  removeProductFromFavourite: (state, { payload }) => {
+    state.favourite = state.favourite.filter(item => item !== payload);
+    localStorage.setItem("favourite", JSON.stringify(state.favourite));
+  },
+
+
   },
   extraReducers: (builder) => {
     builder
@@ -159,7 +177,13 @@ export const {
   decrementProduct,
   removeProductFromCart,
   getCartFromLocalStorage,
-  clearCart
+  clearCart,
+  setFavourite, 
+  removeProductFromFavourite 
 } = productSlice.actions;
+
+export const selectFavourites = (state) => state.products.favourite;
+export const selectProducts = (state) => state.products.products;
+
 
 export default productSlice.reducer;
