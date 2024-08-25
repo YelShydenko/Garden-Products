@@ -8,6 +8,8 @@ import SaleProductsPage from "./pages/SaleProductsPage/SaleProductsPage";
 import AllProducts from './pages/Products/AllProducts';
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { fetchCategories, fetchProducts } from "./store/features/productSlice";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import { fetchCategories, fetchProducts, getCartFromLocalStorage } from "./store/features/productSlice";
 import Cart from "./pages/Cart/Cart";
 import ProductPage from "./pages/ProductPage/ProductPage";
@@ -31,9 +33,9 @@ function App() {
             <Route path="/categories/:categoryId" element={<CategoriesProduct/> } /> 
             <Route path="/sale/products/all" element={<SaleProductsPage/> } />
             <Route path="/products/all" element={<AllProducts />} />
+            <Route path="*" element={<ErrorPage />} />
             <Route path="/products/:productId" element={<ProductPage/> } /> 
             <Route path="/cart" element={<Cart/> } />
-            {/* <Route path="/error" element={ } /> */}
           </Route>
         </Routes>
       </ThemeProvider>
