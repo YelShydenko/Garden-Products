@@ -37,12 +37,17 @@ const initialState = {
   favourite: [],
   loading: false,
   error: "",
+  theme: 'light',
 };
 
 export const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+    addThemeInLocalStorage: (state, { payload }) => {
+      localStorage.setItem('theme', JSON.stringify(payload.theme)); // сохраняем тему
+      state.theme = payload.theme;
+    },
     sortBy: (state, { payload }) => {
       let data =
         state.filteredProducts.length > 0
@@ -99,6 +104,6 @@ export const productSlice = createSlice({
   },
 });
 
-export const { sortBy, filterByPrice } = productSlice.actions;
+export const { sortBy, filterByPrice, addThemeInLocalStorage } = productSlice.actions;
 
 export default productSlice.reducer;
