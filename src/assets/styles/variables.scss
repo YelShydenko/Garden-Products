@@ -2,6 +2,7 @@
 $font-darkColor: #424436;
 $font-lightColor: #FFFFFF;
 $font-greyColor: #8b8b8b;
+$font-light-grey: #dddddd;
 
 // Цвет фона
 $bg-color-lightTheme: #FFFFF1;
@@ -10,13 +11,20 @@ $bg-color-white: #ffffff;
 $bg-color-dark: #383a2c;
 $bg-toggle-lightTheme: #8b8b8b;
 $bg-toggle-darkTheme: #ffffff;
+$bg-modalWindow: rgba(40, 40, 40, 0.4);
+$bg-modalwindow-message: #92A134;
 
 // Цвет футера
 $footer-items-bg-light: #f2f6d3;
 $footer-items-bg-dark: #383a2c;
 
+//Фвет формы корзины 
+$cart-form-bg-light: #f2f6d3;
+$cart-form-bg-dark: #383a2c;
+
 //Цвет скидки
 $sale-color: #f26d22;
+$sale-color-green: #92A134;
 
 // Цвет границ
 $border-color-white: #ffffff;
@@ -33,6 +41,9 @@ $light-grey: #dddddd;
 $white-color: #FFFFF1;
 $green-color: #92A134;
 
+//Фвет ошибки
+$error-color: #ff0000;
+
 //Радиусы
 $radius-small: 6px;
 $radius-big: 12px;
@@ -45,7 +56,13 @@ $common-text: 20px;
 $footer-info-text: 40px;
 $price-text: 40px;
 $small-text: 16px;
+$cart-form-text: 40px;
+$cart-total-price-text: 64px;
+$product-page-title-text: 40px;
+$product-page-price-text: 64px;
 
 //Размер иконок
 $icons-size: 48px;
 $footer-icon-size: 43px;
+$cart-close-icon: 24px;
+$modal-close-icon: 44px;

@@ -9,6 +9,11 @@ import AllProducts from './pages/Products/AllProducts';
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchCategories, fetchProducts } from "./store/features/productSlice";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import { fetchCategories, fetchProducts, getCartFromLocalStorage } from "./store/features/productSlice";
+import Cart from "./pages/Cart/Cart";
+import FavoritesPage from "./pages/Products/FavoritesPage";
+import ProductPage from "./pages/ProductPage/ProductPage";
 
 function App() {
   const dispatch = useDispatch()
@@ -16,6 +21,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchCategories())
     dispatch(fetchProducts())
+    dispatch(getCartFromLocalStorage())
   }, [dispatch])
   
   return (
@@ -28,9 +34,10 @@ function App() {
             <Route path="/categories/:categoryId" element={<CategoriesProduct/> } /> 
             <Route path="/sale/products/all" element={<SaleProductsPage/> } />
             <Route path="/products/all" element={<AllProducts />} />
-            {/* <Route path="/products/:productId" element={ } /> */}
-            {/* <Route path="/cart" element={ } /> */}
-            {/* <Route path="/error" element={ } /> */}
+            <Route path="/favorites" element={<FavoritesPage />} />
+            <Route path="*" element={<ErrorPage />} />
+            <Route path="/products/:productId" element={<ProductPage/> } /> 
+            <Route path="/cart" element={<Cart/> } />
           </Route>
         </Routes>
       </ThemeProvider>
