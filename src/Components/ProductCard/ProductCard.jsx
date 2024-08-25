@@ -7,12 +7,17 @@ import { IoMdHeart } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart } from "@/store/features/productSlice";
 import { removeProductFromCart } from "../../store/features/productSlice";
+import { setFavourite, removeProductFromFavourite } from "@/store/features/productSlice";
 
 const ProductCard = ({ product }) => {
   const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.products.cart); // Получаем корзинy из productSlice
   const isProductInCart = cart.some((item) => item.id === product.id); // Проверяем, есть ли товар в корзине
+  const favourites = useSelector((state) => state.products.favourite); // Получаем избранное из productSlice
+  const isProductFavourite = favourites.includes(product.id);// Проверяем, есть ли товар в избранном
+
+
 
   const discountPercentage = product.discont_price
     ? Math.round(
@@ -29,6 +34,16 @@ const ProductCard = ({ product }) => {
     }
   }
 
+  const handleFavouriteToggle = () => {
+    if (isProductFavourite) {
+      dispatch(removeProductFromFavourite(product.id)); // Удаляем товар из избранного
+    } else {
+      dispatch(setFavourite(product.id)); // Добавляем товар в избранное
+    }
+  };
+  
+
+
   return (
     <div className={`product__card card-${theme}`}>
       <div className="product__image-container">
@@ -40,7 +55,10 @@ const ProductCard = ({ product }) => {
           />
         </div>
         <div className="product__image-icons">
-          <IoMdHeart className="icon" />
+        <IoMdHeart
+            className={`icon ${isProductFavourite ? "icon__favourite" : ""}`} // Меняет класс иконки в зависимости от избранного
+            onClick={handleFavouriteToggle}  // Подключаем обработчик клика
+          />
           <GiShoppingBag
             className={`icon ${isProductInCart ? "icon__in-cart" : ""}`}
             onClick={handleCartToggle}
