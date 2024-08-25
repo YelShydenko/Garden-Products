@@ -51,12 +51,17 @@ const initialState = {
   favourite: [],
   loading: false,
   error: "",
+  theme: 'light',
 };
 
 export const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+    addThemeInLocalStorage: (state, { payload }) => {
+      localStorage.setItem('theme', JSON.stringify(payload.theme)); // сохраняем тему
+      state.theme = payload.theme;
+    },
     sortBy: (state, { payload }) => {
       // Сортировка
       let data =
@@ -204,11 +209,11 @@ export const {
   getCartFromLocalStorage,
   clearCart,
   setFavourite, 
-  removeProductFromFavourite 
+  removeProductFromFavourite,
+  addThemeInLocalStorage
 } = productSlice.actions;
 
 export const selectFavourites = (state) => state.products.favourite;
 export const selectProducts = (state) => state.products.products;
-
 
 export default productSlice.reducer;
