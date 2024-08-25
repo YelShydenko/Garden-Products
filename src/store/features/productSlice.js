@@ -28,6 +28,20 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
+export const fetchProductsById = createAsyncThunk( 
+  // получение данных о 1 товаре с апи 
+  "products/fetchProductsById", 
+  async (productId) => { 
+    const res = await fetch( 
+     `https://exam-server-5c4e.onrender.com/products/${productId}` 
+    ); 
+ 
+    const data = await res.json(); 
+ 
+    return data[0]; 
+  } 
+);
+
 const initialState = {
   products: [],
   categories: [],
@@ -71,13 +85,13 @@ export const productSlice = createSlice({
           (!discount || item.discont_price !== null)
       );
     },
-    addProductToCart: (state, { payload }) => {
-      // Добавление товара в корзину
-      let foundProduct = state.cart.find((item) => item.id === payload.id);
-      if (!foundProduct) {
-        state.cart.push({ ...payload, count: 1 });
-        localStorage.setItem("cart", JSON.stringify(state.cart));
-      }
+    addProductToCart: (state, { payload }) => { 
+      // Добавление товара в корзину 
+      let foundProduct = state.cart.find((item) => item.id === payload.id); 
+      if (!foundProduct) { 
+        state.cart.push({ ...payload, count: payload.count || 1 }); 
+        localStorage.setItem("cart", JSON.stringify(state.cart)); 
+      } 
     },
     incrementProduct: (state, { payload }) => {
       // Увеличение к-ва товара
@@ -165,6 +179,17 @@ export const productSlice = createSlice({
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+      })
+      .addCase(fetchProductsById.pending, (state) => { 
+        state.loading = true; 
+      }) 
+      .addCase(fetchProductsById.fulfilled, (state, action) => { 
+        state.loading = false; 
+        state.product = action.payload; 
+      }) 
+      .addCase(fetchProductsById.rejected, (state, action) => { 
+        state.loading = false; 
+        state.error = action.error.message; 
       });
   },
 });
