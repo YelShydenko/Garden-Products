@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
 import Button from "../UI/Button/Button";
 import { ThemeContext } from "@/ThemeContext/ThemeContext";
 import { GiShoppingBag } from "react-icons/gi";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const { theme } = useContext(ThemeContext); // Передаем нашу тему
+  const { favourite, cart } = useSelector((state) => state.products);
 
   return (
     <header className="header">
@@ -64,11 +66,21 @@ const Header = () => {
         </div>
       </div>
       <div className="icons">
-        <Link to={"/favorites"}>
+        <Link className="header__icon" to={"/favorites"}>
           <IoMdHeart className={`icon-${theme}`} />
+          {favourite.length > 0 && (
+            <div className="quantity">
+              <p>{favourite.length}</p>
+            </div>
+          )}
         </Link>
-        <Link to={"/cart"}>
+        <Link className="header__icon" to={"/cart"}>
           <GiShoppingBag className={`icon-${theme}`} />
+          {cart.length > 0 && (
+            <div className="quantity">
+              <p>{cart.length}</p>
+            </div>
+          )}
         </Link>
       </div>
     </header>
