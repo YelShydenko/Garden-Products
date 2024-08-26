@@ -3,8 +3,13 @@ import "./FilterAndSort.scss";
 import { filterByPrice, sortBy } from "@/store/features/productSlice";
 import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "@/ThemeContext/ThemeContext";
+import { filterFavourite, sortFavourite } from "@/store/features/productSlice";
 
-const FilterAndSort = ({ pageTitle, showDiscountFilter = true }) => {
+const FilterAndSort = ({
+  pageTitle,
+  showDiscountFilter = true,
+  isFavouritePage = false,
+}) => {
   const { theme } = useContext(ThemeContext); // Выбор нашей темы
   const dispatch = useDispatch();
   const [minPrice, setMinPrice] = useState(""); // Храним минимальную цену для фильтрации
@@ -22,17 +27,24 @@ const FilterAndSort = ({ pageTitle, showDiscountFilter = true }) => {
     const min = minPrice !== "" ? Number(minPrice) : 0; // если не задано, минимум 0
     const max = maxPrice !== "" ? Number(maxPrice) : Infinity; // если не задано, максимум бесконечность
 
-    // Вызываем фильтрацию по цене
-    dispatch(filterByPrice({ minPrice: min, maxPrice: max }));
-
-    // Если выбраны товары со скидкой, применяем соответствующую сортировку
-    if (isDiscounted) {
-      dispatch(sortBy({ value: "discount" }));
+    // Применяем фильтрацию по цене и скидке
+    if (isFavouritePage) {
+      // Если это страница избранных товаров
+      dispatch(
+        filterFavourite({
+          minPrice: min,
+          maxPrice: max,
+          discount: isDiscounted,
+        })
+      );
+      dispatch(sortFavourite({ value: select }));
     } else {
-      dispatch(sortBy({ value: "default" })); // Возвращаем сортировку по умолчанию
+      // Если это страница обычных товаров
+      dispatch(
+        filterByPrice({ minPrice: min, maxPrice: max, discount: isDiscounted })
+      );
+      dispatch(sortBy({ value: select }));
     }
-
-    dispatch(sortBy({ value: select }));
   }, [minPrice, maxPrice, isDiscounted, select, dispatch]);
 
   return (
