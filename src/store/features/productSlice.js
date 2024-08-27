@@ -28,18 +28,18 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
-export const fetchProductsById = createAsyncThunk( 
-  // получение данных о 1 товаре с апи 
-  "products/fetchProductsById", 
-  async (productId) => { 
-    const res = await fetch( 
-     `https://exam-server-5c4e.onrender.com/products/${productId}` 
-    ); 
- 
-    const data = await res.json(); 
- 
-    return data[0]; 
-  } 
+export const fetchProductsById = createAsyncThunk(
+  // получение данных о 1 товаре с апи
+  "products/fetchProductsById",
+  async (productId) => {
+    const res = await fetch(
+      `https://exam-server-5c4e.onrender.com/products/${productId}`
+    );
+
+    const data = await res.json();
+
+    return data[0];
+  }
 );
 
 const initialState = {
@@ -49,19 +49,15 @@ const initialState = {
   product: null,
   cart: [],
   favourite: [],
+  filteredFavourite: [],
   loading: false,
   error: "",
-  theme: 'light',
 };
 
 export const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    addThemeInLocalStorage: (state, { payload }) => {
-      localStorage.setItem('theme', JSON.stringify(payload.theme)); // сохраняем тему
-      state.theme = payload.theme;
-    },
     sortBy: (state, { payload }) => {
       // Сортировка
       let data =
@@ -80,6 +76,24 @@ export const productSlice = createSlice({
         state.filteredProducts = data.sort((a, b) => a.id - b.id);
       }
     },
+    sortFavourite: (state, { payload }) => {
+      // Сортировка избранных товаров
+      let data =
+        state.filteredFavourite.length > 0
+          ? state.filteredFavourite
+          : state.favourite;
+      if (payload.value === "low-to-high") {
+        state.filteredFavourite = data.sort((a, b) => a.price - b.price);
+      } else if (payload.value === "high-to-low") {
+        state.filteredFavourite = data.sort((a, b) => b.price - a.price);
+      } else if (payload.value === "discount") {
+        state.filteredFavourite = data.filter(
+          (product) => product.discont_price !== null
+        );
+      } else {
+        state.filteredFavourite = data.sort((a, b) => a.id - b.id);
+      }
+    },
     filterByPrice: (state, { payload }) => {
       // Фильтрация
       const { minPrice, maxPrice, discount } = payload;
@@ -90,13 +104,23 @@ export const productSlice = createSlice({
           (!discount || item.discont_price !== null)
       );
     },
-    addProductToCart: (state, { payload }) => { 
-      // Добавление товара в корзину 
-      let foundProduct = state.cart.find((item) => item.id === payload.id); 
-      if (!foundProduct) { 
-        state.cart.push({ ...payload, count: payload.count || 1 }); 
-        localStorage.setItem("cart", JSON.stringify(state.cart)); 
-      } 
+    filterFavourite: (state, { payload }) => {
+      // Фильтрация избранных товаров
+      const { minPrice, maxPrice, discount } = payload;
+      state.filteredFavourite = state.favourite.filter(
+        (item) =>
+          item.price >= minPrice &&
+          item.price <= maxPrice &&
+          (!discount || item.discont_price !== null)
+      );
+    },
+    addProductToCart: (state, { payload }) => {
+      // Добавление товара в корзину
+      let foundProduct = state.cart.find((item) => item.id === payload.id);
+      if (!foundProduct) {
+        state.cart.push({ ...payload, count: payload.count || 1 });
+        localStorage.setItem("cart", JSON.stringify(state.cart));
+      }
     },
     incrementProduct: (state, { payload }) => {
       // Увеличение к-ва товара
@@ -138,28 +162,33 @@ export const productSlice = createSlice({
       }
     },
     clearCart: (state) => {
-      // Очистить корзину и LocalStorage корзины 
+      // Очистить корзину и LocalStorage корзины
       state.cart = [];
       localStorage.removeItem("cart");
     },
-    // Добавление или удаление товара из избранного
-  setFavourite: (state, { payload }) => {
-    let foundFavourite = state.favourite.find(item => item === payload);
-    if (foundFavourite) {
-      state.favourite = state.favourite.filter(item => item !== payload);
-    } else {
-      state.favourite.push(payload);
-    }
-    localStorage.setItem("favourite", JSON.stringify(state.favourite));
-  },
-
-  // Удаление товара из избранного
-  removeProductFromFavourite: (state, { payload }) => {
-    state.favourite = state.favourite.filter(item => item !== payload);
-    localStorage.setItem("favourite", JSON.stringify(state.favourite));
-  },
-
-
+    setFavourite: (state, { payload }) => {
+      // Добавление товара в избранное
+      let foundFavourite = state.favourite.find(
+        (item) => item.id === payload.id
+      );
+      if (!foundFavourite) {
+        state.favourite.push(payload);
+        localStorage.setItem("favourite", JSON.stringify(state.favourite));
+      }
+    },
+    removeProductFromFavourite: (state, { payload }) => {
+      // Удаление товара из избранного
+      state.favourite = state.favourite.filter((item) => item.id !== payload);
+      localStorage.setItem("favourite", JSON.stringify(state.favourite));
+    },
+    getFavoriteFromLocalStorage: (state) => {
+      let favoriteStorage = JSON.parse(localStorage.getItem("favourite"));
+      if (favoriteStorage) {
+        state.favourite = [...favoriteStorage];
+      } else {
+        localStorage.setItem("favourite", JSON.stringify([]));
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -185,16 +214,16 @@ export const productSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      .addCase(fetchProductsById.pending, (state) => { 
-        state.loading = true; 
-      }) 
-      .addCase(fetchProductsById.fulfilled, (state, action) => { 
-        state.loading = false; 
-        state.product = action.payload; 
-      }) 
-      .addCase(fetchProductsById.rejected, (state, action) => { 
-        state.loading = false; 
-        state.error = action.error.message; 
+      .addCase(fetchProductsById.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchProductsById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.product = action.payload;
+      })
+      .addCase(fetchProductsById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
       });
   },
 });
@@ -202,18 +231,17 @@ export const productSlice = createSlice({
 export const {
   sortBy,
   filterByPrice,
+  sortFavourite,
+  filterFavourite,
   addProductToCart,
   incrementProduct,
   decrementProduct,
   removeProductFromCart,
   getCartFromLocalStorage,
   clearCart,
-  setFavourite, 
+  setFavourite,
   removeProductFromFavourite,
-  addThemeInLocalStorage
+  getFavoriteFromLocalStorage,
 } = productSlice.actions;
-
-export const selectFavourites = (state) => state.products.favourite;
-export const selectProducts = (state) => state.products.products;
 
 export default productSlice.reducer;

@@ -1,26 +1,25 @@
-import React, { createContext, useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { addThemeInLocalStorage } from "../store/features/productSlice";
-
+import { createContext, useState, useEffect } from "react";
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
 
-  // получаем диспатч для вызова функции addThemeInLocalStorage 
-  const dispatch = useDispatch();   
-
-  // получаем тему из localStorage
-  const savedTheme = JSON.parse(localStorage.getItem("theme"));
-
   // используем useState для управления темой
-  const [theme, setTheme] = useState(savedTheme);
+  const [theme, setTheme] = useState("light");
 
   // Функция для смены темы
   const switchTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-    dispatch(addThemeInLocalStorage({ theme: newTheme }));
+
+    localStorage.setItem("theme", JSON.stringify(newTheme));
   };
+
+  useEffect(() => {
+    // получаем тему из localStorage
+    const savedTheme = JSON.parse(localStorage.getItem("theme"));
+
+    setTheme(savedTheme);
+  },[])
 
   // Обновляем класс body в зависимости от темы, чтобы менять именно цвет body
   useEffect(() => {

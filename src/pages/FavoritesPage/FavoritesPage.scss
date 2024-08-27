@@ -1,0 +1,27 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных
+
+.favorite__product-section {
+  padding: 40px 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  .favorite__product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(316px, 1fr));
+    gap: 32px;
+  }
+
+  .empty__favourite {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 32px;
+    &-info {
+      font-size: nav.$common-text;
+    }
+    .info-dark {
+      color: nav.$font-light-grey;
+    }
+  }
+}

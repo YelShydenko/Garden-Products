@@ -1,13 +1,12 @@
 @use "@/assets/styles/variables.scss" as nav; // импорт для переменных
 
 .header {
-  max-width: 1440px;
-  margin: 0 auto;
   position: relative;
   padding: 30px 40px 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid nav.$border-color-grey;
 
   .logo {
     display: flex;
@@ -30,7 +29,7 @@
           cursor: pointer;
           .nav__menu-link {
             color: nav.$font-darkColor;
-            &:hover{
+            &:hover {
               color: nav.$green-color;
             }
           }
@@ -50,17 +49,37 @@
   .icons {
     display: flex;
     gap: 15px;
+    position: relative;
+
+    .header__icon {
+      position: relative;
+    }
+    .quantity {
+      position: absolute;
+      background-color: nav.$green-color;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      font-size: nav.$product-quantity-header;
+      color: nav.$font-lightColor;
+      font-weight: 600;
+    }
     .icon-light {
       font-size: nav.$icons-size;
       fill: none;
       stroke: nav.$font-darkColor;
       stroke-width: 20px;
     }
-  }
-  .icon-dark {
-    font-size: nav.$icons-size;
-    fill: none;
-    stroke: nav.$white-color;
-    stroke-width: 20px;
+    .icon-dark {
+      font-size: nav.$icons-size;
+      fill: none;
+      stroke: nav.$white-color;
+      stroke-width: 20px;
+    }
   }
 }

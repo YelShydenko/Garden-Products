@@ -18,6 +18,7 @@
   .sort__filter-container {
     display: flex;
     gap: 40px;
+    flex-wrap: wrap;
 
     .filter__by-price,
     .sort__by-price,
