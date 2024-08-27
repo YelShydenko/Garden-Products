@@ -1,14 +1,25 @@
-import React, { createContext, useState, useEffect } from "react";
-
+import { createContext, useState, useEffect } from "react";
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
+
+  // используем useState для управления темой
   const [theme, setTheme] = useState("light");
 
-  // функция для смены темы
+  // Функция для смены темы
   const switchTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+
+    localStorage.setItem("theme", JSON.stringify(newTheme));
   };
+
+  useEffect(() => {
+    // получаем тему из localStorage
+    const savedTheme = JSON.parse(localStorage.getItem("theme"));
+
+    setTheme(savedTheme);
+  },[])
 
   // Обновляем класс body в зависимости от темы, чтобы менять именно цвет body
   useEffect(() => {
