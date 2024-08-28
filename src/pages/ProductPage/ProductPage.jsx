@@ -15,16 +15,32 @@ import Button from "@/Components/UI/Button/Button";
 import { IoMdHeart } from "react-icons/io";
 import { ThemeContext } from "@/ThemeContext/ThemeContext";
 import ZoomPhoto from "@/Components/ZoomPhoto/ZoomPhoto";
+import Breadcrumbs from "@/Components/Breadcrumbs/Breadcrumbs";
 
 const ProductPage = () => {
   const { productId } = useParams(); // Извлечение ID продукта из URL
   const dispatch = useDispatch();
-  const { product, cart, favourite } = useSelector((state) => state.products); // Доступ к данным продукта и корзины из Redux
+  const { product, cart, favourite, categories } = useSelector(
+    (state) => state.products
+  ); // Доступ к данным продукта и корзины из Redux
   const { theme } = useContext(ThemeContext); // Использование темы
   const [count, setCount] = useState(1); // Состояние для управления количеством товара
   const [isZoomed, setisZoomed] = useState(false); // Состояние для управления модальным окном изображения
 
   const isProductFavourite = favourite.some((item) => item.id === product.id); // Проверяем, есть ли товар в избранном
+
+  const categoryId = product ? product.categoryId : null;
+
+  const title = categories
+    ?.filter((product) => product.id === +categoryId)
+    .find((product) => product.id === +categoryId);
+
+  const crumbs = [
+    { path: "/", label: "Main page" },
+    { path: "/categories/all", label: "Categories" },
+    { path: `/categories/${categoryId}`, label: `${title?.title}` },
+    { path: `/products/${productId}`, label: `${product?.title}` },
+  ];
 
   // Загрузка данных продукта
   useEffect(() => {
@@ -88,7 +104,8 @@ const ProductPage = () => {
       : 0;
 
   return (
-    <section>
+    <section className="product__page-section">
+      <Breadcrumbs crumbs={crumbs} />
       <div className="product__page">
         <div className="product__image" onClick={toggleZoom}>
           <img

@@ -42,3 +42,13 @@
   padding: 6px 16px;
   font-size: nav.$small-text;
 }
+
+.breadcrumbs__last-light{
+  color: nav.$font-darkColor;
+  font-weight: 500;
+}
+
+.breadcrumbs__last-dark{
+  color: nav.$font-lightColor;
+  font-weight: 500;
+}
