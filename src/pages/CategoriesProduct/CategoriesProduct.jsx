@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import ProductCard from "@/Components/ProductCard/ProductCard";
 import "./CategoriesProduct.scss";
 import FilterAndSort from "@/Components/FilterAndSort/FilterAndSort";
+import Breadcrumbs from "@/Components/Breadcrumbs/Breadcrumbs";
 
 function CategoriesProduct() {
   const { categoryId } = useParams(); // берем id категории из поисковика
@@ -17,9 +18,16 @@ function CategoriesProduct() {
   const title = categories
     ?.filter((product) => product.id === +categoryId)
     .find((product) => product.id === +categoryId);
+  
+  const crumbs = [
+    { path: "/", label: "Main page" },
+    { path: "/categories/all", label: "Categories" },
+    { path: `/categories/${categoryId}`, label: `${title.title}`}
+  ];
 
   return (
     <section className="categories_products-section">
+      <Breadcrumbs crumbs={crumbs} />
       <FilterAndSort pageTitle={title?.title} />
       <div className="categories_product-list">
         {products &&

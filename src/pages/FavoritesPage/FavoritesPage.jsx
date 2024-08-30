@@ -6,6 +6,7 @@ import Button from "@/Components/UI/Button/Button";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "@/ThemeContext/ThemeContext";
+import Breadcrumbs from "@/Components/Breadcrumbs/Breadcrumbs";
 
 const FavoritesPage = () => {
   const favourite = useSelector((state) =>
@@ -16,8 +17,14 @@ const FavoritesPage = () => {
 
   const { theme } = useContext(ThemeContext); // Выбор нашей темы
 
+  const crumbs = [
+    { path: "/", label: "Main page" },
+    { path: "/favorites", label: "Liked products" },
+  ];
+
   return (
     <section className="favorite__product-section">
+      <Breadcrumbs crumbs={crumbs}/>
       <FilterAndSort
         pageTitle={"Liked products"}
         showDiscountFilter={false}

@@ -1,6 +1,12 @@
 @use "@/assets/styles/variables.scss" as nav; // импорт для переменных
-.product__page {
+.product__page-section {
   padding: 40px 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.product__page {
   display: flex;
   gap: 32px;
 
@@ -40,16 +46,16 @@
           fill: nav.$font-darkColor;
         }
       }
-      
+
       .icon-dark {
         fill: none;
         stroke: nav.$white-color;
       }
 
-      .icon__favourite{
-      fill: nav.$green-color;
-      stroke: none;
-    }
+      .icon__favourite {
+        fill: nav.$green-color;
+        stroke: none;
+      }
     }
 
     .product__pricing {

@@ -4,14 +4,16 @@
 .categories {
     
   &__page-section {
-    padding: 0 40px;
+    padding: 40px 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
   }
 
    &__section-title {
       font-size: nav.$section-title;
       font-weight: 700;
       color: nav.$font-darkColor;
-      margin-bottom: 40px;
     }
 
     .title-dark {
