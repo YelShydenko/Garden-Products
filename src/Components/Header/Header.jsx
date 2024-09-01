@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { IoMdHeart } from "react-icons/io";
 import "./Header.scss";
 import ThemeComponent from "../Theme/ThemeComponent";
@@ -7,10 +7,16 @@ import Button from "../UI/Button/Button";
 import { ThemeContext } from "@/ThemeContext/ThemeContext";
 import { GiShoppingBag } from "react-icons/gi";
 import { useSelector } from "react-redux";
+import ModalDayProduct from "../Modal/ModalDayProduct/ModalDayProduct";
+import DailyProductCard from "../Modal/DailyProductCard/DailyProductCard";
 
 const Header = () => {
-  const { theme } = useContext(ThemeContext); // Передаем нашу тему
-  const { favourite, cart } = useSelector((state) => state.products);
+const { theme } = useContext(ThemeContext); // Передаем нашу тему
+const { favourite, cart } = useSelector((state) => state.products);
+const [isOpenModal, setIsOpenModal] = useState(false)
+const toggleModal = ( ) => {
+  setIsOpenModal(!isOpenModal)
+}
 
   return (
     <header className="header">
@@ -29,6 +35,7 @@ const Header = () => {
             btnColor={"green"}
             btnSize={"XS"}
             btnText={"1 day discount!"}
+            handleOnClick= {toggleModal}
           />
         </div>
         <div className="nav__menu">
@@ -83,7 +90,14 @@ const Header = () => {
           )}
         </Link>
       </div>
+      {isOpenModal && 
+        <ModalDayProduct toggleModal={toggleModal}>
+      <DailyProductCard/>
+      </ModalDayProduct> 
+      }
+     
     </header>
+
   );
 };
 
