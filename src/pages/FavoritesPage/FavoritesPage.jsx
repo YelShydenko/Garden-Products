@@ -6,6 +6,7 @@ import Button from "@/Components/UI/Button/Button";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "@/ThemeContext/ThemeContext";
+import ProductSkeleton from "@/Components/ProductSkeleton/ProductSkeleton";
 
 const FavoritesPage = () => {
   const favourite = useSelector((state) =>
@@ -13,6 +14,8 @@ const FavoritesPage = () => {
       ? state.products.filteredFavourite
       : state.products.favourite
   ); // Извлекаем избранные товары из состояния Redux
+
+  const loading = useSelector((state) => state.products.loading);
 
   const { theme } = useContext(ThemeContext); // Выбор нашей темы
 
@@ -26,9 +29,13 @@ const FavoritesPage = () => {
 
       {favourite.length > 0 ? (
         <div className="favorite__product-list">
-          { favourite && favourite.map((product) => (
-            <ProductCard product={product} key={product.id} />
-          ))}
+          {loading || favourite.length === 0 ? ( 
+            <ProductSkeleton /> 
+          ) : ( 
+            favourite.map((product) => ( 
+              <ProductCard product={product} key={product.id} /> 
+            )) 
+          )}
         </div>
       ) : (
         <div className="empty__favourite">

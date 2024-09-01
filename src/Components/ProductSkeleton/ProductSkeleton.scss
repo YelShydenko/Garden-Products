@@ -1,0 +1,7 @@
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных  
+ 
+.product-skeleton-item { 
+  background-color: nav.$bg-skeleton;  
+  border-radius: nav.$radius-big; 
+  height: 422px;  
+}
