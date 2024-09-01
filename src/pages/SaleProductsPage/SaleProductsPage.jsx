@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import "./SaleProductsPage.scss";
-import Button from "@/Components/UI/Button/Button";
 import ProductCard from "@/Components/ProductCard/ProductCard";
 import FilterAndSort from "@/Components/FilterAndSort/FilterAndSort";
+import Breadcrumbs from "@/Components/Breadcrumbs/Breadcrumbs";
 
 const SaleProductsPage = () => {
   const products = useSelector((state) =>
@@ -13,15 +13,16 @@ const SaleProductsPage = () => {
 
    const discountedProducts = products.filter(
      (product) => product.discont_price !== null
-   ); // Фильтруем наши товары со скидкой 
+  ); // Фильтруем наши товары со скидкой
+  
+   const crumbs = [
+     { path: "/", label: "Main page" },
+     { path: "/sale/products/all", label: "All sales" },
+   ];
 
   return (
     <section className="sale__products-page">
-      <div className="breadcrumbs">
-        <Button btnColor={"neutral"} btnSize={"XS"} btnText={"Main page"} />
-        <div className="breadcrumbs__linie"></div>
-        <Button btnColor={"neutral"} btnSize={"XS"} btnText={"All sales"} />
-      </div>
+      <Breadcrumbs crumbs={crumbs}/>
       <FilterAndSort // Компонент сортировки и фильтрации
         pageTitle={"Discounted items"} 
         showDiscountFilter={false}

@@ -43,8 +43,12 @@
   font-size: nav.$small-text;
 }
 
-.size-XM {
-  padding: 16px 32px;
-  font-size: nav.$common-text;
-  font-weight: 600;
+.breadcrumbs__last-light{
+  color: nav.$font-darkColor;
+  font-weight: 500;
+}
+
+.breadcrumbs__last-dark{
+  color: nav.$font-lightColor;
+  font-weight: 500;
 }
