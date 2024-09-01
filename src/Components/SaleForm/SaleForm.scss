@@ -53,3 +53,14 @@
     text-align: start;
   }
 }
+
+@media (max-width: 768px) {
+.sale__form-container {
+  flex-wrap: wrap-reverse;
+
+  img {
+    max-width: 600px;
+  }
+}
+}
+

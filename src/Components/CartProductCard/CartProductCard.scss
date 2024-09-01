@@ -109,3 +109,47 @@
     }
   }
 }
+
+
+@media (max-width: 1000px) {
+  .product__cart-card {
+    align-items: flex-start;
+    max-width: 470px;
+  }
+
+  .product__info {
+    max-height: 192px;
+  }
+
+  .price__counter {
+    max-width: 176px;
+    display: flex;
+    flex-direction: column;
+    margin-top: -30px; 
+  }
+
+  .product__price {
+    margin-top: -20px; 
+  }
+
+  .product-title {
+    width: 229px;
+    margin-top: -30px; 
+   
+  }
+}
+
+@media (max-width: 768px) {
+  .cart__container {
+    flex-direction: column;
+  }
+
+  .product__cart-card {
+    max-width: 100%;
+  }
+
+  .price__counter {
+    display: flex;
+    flex-direction: row;
+  } 
+}

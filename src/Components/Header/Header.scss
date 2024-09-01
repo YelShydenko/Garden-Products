@@ -20,7 +20,7 @@
     text-align: center;
 
     .nav__menu {
-      ul {
+      &-list {
         display: flex;
         gap: 32px;
         font-weight: 500;
@@ -81,5 +81,28 @@
       stroke: nav.$white-color;
       stroke-width: 20px;
     }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .nav__menu {
+      &-list {
+        gap: 15px !important;
+      }
+    }
+}
+
+@media (max-width: 480px) {  // нужно добавить БУРГЕР 
+  .button__discount {
+    display: none; 
+  }
+  .nav__menu {
+    display: none;
+  } 
+}
+@media (max-width: 360px) {  //сделано без учета бургер меню 
+  .header {
+    padding: 10px 15px; 
   }
 }
