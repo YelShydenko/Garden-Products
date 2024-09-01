@@ -32,7 +32,7 @@ const Header = () => {
           />
         </div>
         <div className="nav__menu">
-          <ul>
+         <ul className="nav__menu-list">
             <li>
               <Link to={"/"} className={`nav__menu-link link-${theme}`}>
                 Main Page
