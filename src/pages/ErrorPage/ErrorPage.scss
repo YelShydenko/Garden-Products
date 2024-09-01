@@ -23,7 +23,9 @@
         font-size: nav.$section-title;
         color: nav.$font-darkColor;
         margin-bottom: 16px;
+        white-space: nowrap;
       }
+
       & p,
       span {
         font-weight: 500;
@@ -32,9 +34,52 @@
         color: nav.$font-greyColor;
         margin-bottom: 32px;
       }
-      .error-dark{
+
+      .error-dark {
         color: nav.$font-lightColor;
       }
     }
   }
 }
+@media (max-width: 768px) {
+  .content__item {
+    &__number {
+      img {
+        max-width: 108px;
+      }
+    }
+
+    &__image {
+      img {
+        width: 181px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .content__item {
+    margin-left: 20px;
+  }
+  .content__text {
+     h2 {
+      padding-left: 85px;
+    }
+    span {
+      padding-left: 85px;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .content__item {
+    padding: 0px 0px 0px 130px;
+  }
+  .content__text {
+    h2 {
+      padding-left: 85px;
+    }
+  }
+}
+
+

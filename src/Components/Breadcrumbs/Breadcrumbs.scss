@@ -1,0 +1,21 @@
+@use "@/assets/styles/variables.scss" as nav; // Импорт для переменных
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__linie {
+    height: 1px;
+    width: 16px;
+    background-color: nav.$light-grey;
+  }
+
+  &__last{
+    color: nav.$font-darkColor;
+  }
+}

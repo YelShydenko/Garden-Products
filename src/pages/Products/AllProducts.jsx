@@ -3,6 +3,7 @@ import ProductCard from "@/Components/ProductCard/ProductCard";
 import "./AllProducts.scss";
 import FilterAndSort from "@/Components/FilterAndSort/FilterAndSort";
 import ProductSkeleton from "@/Components/ProductSkeleton/ProductSkeleton";
+import Breadcrumbs from "@/Components/Breadcrumbs/Breadcrumbs";
 
 function AllProducts() {
   const products = useSelector((state) =>
@@ -12,9 +13,15 @@ function AllProducts() {
   ); //выбираем наш массив с продуктами или отфильтроваными продуктами
 
   const loading = useSelector((state) => state.products.loading);
+  
+   const crumbs = [
+     { path: "/", label: "Main page" },
+     { path: "/products/all", label: "All products" },
+   ];
 
   return (
     <section className="all-products">
+      <Breadcrumbs crumbs={crumbs} />
       {/* // Компонент сортировки и фильтрации */}
       <FilterAndSort pageTitle={"All products"} />
       <div className="all-products__grid">

@@ -6,16 +6,6 @@
     flex-direction: column;
     gap: 40px;
 
-    .breadcrumbs{
-        display: flex;
-        align-items: center;
-        &__linie{
-            height: 1px;
-            width: 16px;
-            background-color: nav.$light-grey;
-        }
-    }
-
     .sale__product-list{
         display: grid;
         grid-template-columns:repeat(auto-fill, minmax(316px, 1fr));
