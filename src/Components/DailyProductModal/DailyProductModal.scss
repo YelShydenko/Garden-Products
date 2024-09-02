@@ -3,6 +3,7 @@
 .day__modal-background {
   background-color: nav.$bg-modalWindow;
   position: fixed;
+  overflow-y: auto;
   top: 0;
   left: 0;
   width: 100%;
@@ -13,7 +14,7 @@
     background-color: nav.$bg-modalwindow-message;
     border-radius: nav.$radius-big;
     position: relative;
-    top: 100px;
+    top: 180px;
     left: 50%;
     transform: translate(-50%);
     padding: 32px;
