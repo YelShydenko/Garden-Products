@@ -7,16 +7,20 @@ import Button from "../UI/Button/Button";
 import { ThemeContext } from "@/ThemeContext/ThemeContext";
 import { GiShoppingBag } from "react-icons/gi";
 import { useSelector } from "react-redux";
-import ModalDayProduct from "../Modal/ModalDayProduct/ModalDayProduct";
-import DailyProductCard from "../Modal/DailyProductCard/DailyProductCard";
+import DailyProductModal from "../DailyProductModal/DailyProductModal";
 
 const Header = () => {
-const { theme } = useContext(ThemeContext); // Передаем нашу тему
-const { favourite, cart } = useSelector((state) => state.products);
-const [isOpenModal, setIsOpenModal] = useState(false)
-const toggleModal = ( ) => {
-  setIsOpenModal(!isOpenModal)
-}
+  const { theme } = useContext(ThemeContext); // Передаем нашу тему
+  const { favourite, cart } = useSelector((state) => state.products);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpenModal(!isOpenModal);
+  };
+
+  const closeModalWindow = () => {
+    setIsOpenModal(false);
+  }; // Закрываем модальное окно
 
   return (
     <header className="header">
@@ -35,11 +39,11 @@ const toggleModal = ( ) => {
             btnColor={"green"}
             btnSize={"XS"}
             btnText={"1 day discount!"}
-            handleOnClick= {toggleModal}
+            handleOnClick={toggleModal}
           />
         </div>
         <div className="nav__menu">
-         <ul className="nav__menu-list">
+          <ul className="nav__menu-list">
             <li>
               <Link to={"/"} className={`nav__menu-link link-${theme}`}>
                 Main Page
@@ -90,14 +94,8 @@ const toggleModal = ( ) => {
           )}
         </Link>
       </div>
-      {isOpenModal && 
-        <ModalDayProduct toggleModal={toggleModal}>
-      <DailyProductCard/>
-      </ModalDayProduct> 
-      }
-     
+      {isOpenModal && <DailyProductModal onClose={closeModalWindow} />}
     </header>
-
   );
 };
 
