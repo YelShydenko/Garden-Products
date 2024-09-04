@@ -7,7 +7,7 @@ import { ThemeContext } from "@/ThemeContext/ThemeContext";
 import CartProductCard from "@/Components/CartProductCard/CartProductCard";
 import { Link } from "react-router-dom";
 import Input from "@/Components/UI/Input/Input";
-import { useForm } from "react-hook-form";
+import { useForm } from "react-hook-form"; 
 import { clearCart } from "@/store/features/productSlice";
 import OrderModalWindow from "@/Components/OrderModalWindow/OrderModalWindow";
 
@@ -135,7 +135,7 @@ const Cart = () => {
             <Button
               btnColor={"green"}
               btnSize={"M"}
-              btnText={"Continue Shopping"}
+                btnText={"Continue Shopping"}
             />
           </Link>
         </div>

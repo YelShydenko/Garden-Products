@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { IoMdHeart } from "react-icons/io";
 import "./Header.scss";
 import ThemeComponent from "../Theme/ThemeComponent";
@@ -7,10 +7,20 @@ import Button from "../UI/Button/Button";
 import { ThemeContext } from "@/ThemeContext/ThemeContext";
 import { GiShoppingBag } from "react-icons/gi";
 import { useSelector } from "react-redux";
+import DailyProductModal from "../DailyProductModal/DailyProductModal";
 
 const Header = () => {
   const { theme } = useContext(ThemeContext); // Передаем нашу тему
   const { favourite, cart } = useSelector((state) => state.products);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpenModal(!isOpenModal);
+  };
+
+  const closeModalWindow = () => {
+    setIsOpenModal(false);
+  }; // Закрываем модальное окно
 
   return (
     <header className="header">
@@ -29,10 +39,11 @@ const Header = () => {
             btnColor={"green"}
             btnSize={"XS"}
             btnText={"1 day discount!"}
+            handleOnClick={toggleModal}
           />
         </div>
         <div className="nav__menu">
-          <ul>
+          <ul className="nav__menu-list">
             <li>
               <Link to={"/"} className={`nav__menu-link link-${theme}`}>
                 Main Page
@@ -83,6 +94,7 @@ const Header = () => {
           )}
         </Link>
       </div>
+      {isOpenModal && <DailyProductModal onClose={closeModalWindow} />}
     </header>
   );
 };

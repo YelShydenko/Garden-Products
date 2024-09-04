@@ -14,7 +14,49 @@
       font-size: nav.$main-big-title; 
       font-weight: 700; 
       margin-bottom: 40px; 
+      white-space: nowrap;
     }
 
+  }
+}
+
+@media (max-width: 1000px) {
+  .banner {
+    height: 476px;
+    &__content {
+      padding: 60px 15px;
+      h1 {
+        font-size: 90px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .banner {
+    max-height: 634px;
+    &__content {
+      padding: 20px 20px;
+      h1 {
+        font-size: 68px; 
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    height: 600px;
+  }
+  .banner__content h1 {
+    font-size: 60px; 
+    white-space: wrap;
+  }
+}
+
+@media (max-width: 360px) {
+.banner__content h1 {
+    font-size: 52px;
+    white-space: wrap;
   }
 }
