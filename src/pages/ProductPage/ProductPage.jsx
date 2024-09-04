@@ -16,18 +16,20 @@ import { IoMdHeart } from "react-icons/io";
 import { ThemeContext } from "@/ThemeContext/ThemeContext";
 import ZoomPhoto from "@/Components/ZoomPhoto/ZoomPhoto";
 import Breadcrumbs from "@/Components/Breadcrumbs/Breadcrumbs";
+import ProductSkeleton from "../../Components/ProductSkeleton/ProductSkeleton";
 
 const ProductPage = () => {
   const { productId } = useParams(); // Извлечение ID продукта из URL
   const dispatch = useDispatch();
-  const { product, cart, favourite, categories } = useSelector(
+  const { product, cart, favourite, categories, loading } = useSelector(
     (state) => state.products
   ); // Доступ к данным продукта и корзины из Redux
   const { theme } = useContext(ThemeContext); // Использование темы
   const [count, setCount] = useState(1); // Состояние для управления количеством товара
   const [isZoomed, setisZoomed] = useState(false); // Состояние для управления модальным окном изображения
 
-  const isProductFavourite = favourite.some((item) => item.id === product.id); // Проверяем, есть ли товар в избранном
+  const isProductFavourite =
+    product && favourite.some((item) => item.id === product.id); // Проверяем, есть ли товар в избранном
 
   const categoryId = product ? product.categoryId : null;
 
@@ -59,7 +61,11 @@ const ProductPage = () => {
 
   // Загрузочный экран, если данные продукта еще не загружены
   if (!product) {
-    return <div>Loading...</div>;
+    return (
+      <>
+        <ProductSkeleton />
+      </>
+    );
   }
 
   // Функция для увеличения количества товара
@@ -122,12 +128,14 @@ const ProductPage = () => {
         <div className="product__info">
           <div className="product__title-icon">
             <h3 className={`product__title title-${theme}`}>{product.title}</h3>
-            <IoMdHeart
-              className={`icon icon-${theme} ${
-                isProductFavourite ? "icon__favourite" : ""
-              }`}
-              onClick={handleFavouriteToggle}
-            />
+            <div>
+              <IoMdHeart
+                className={`icon icon-${theme} ${
+                  isProductFavourite ? "icon__favourite" : ""
+                }`}
+                onClick={handleFavouriteToggle}
+              />
+            </div>
           </div>
           <div className="product__pricing">
             {product.discont_price !== null && product.discont_price > 0 ? (

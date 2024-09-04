@@ -5,11 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "@/ThemeContext/ThemeContext";
 import { filterFavourite, sortFavourite } from "@/store/features/productSlice";
 
-const FilterAndSort = ({
-  pageTitle,
-  showDiscountFilter = true,
-  isFavouritePage = false,
-}) => {
+const FilterAndSort = ({ pageTitle, showDiscountFilter = true, isFavouritePage = false }) => {
   const { theme } = useContext(ThemeContext); // Выбор нашей темы
   const dispatch = useDispatch();
   const [minPrice, setMinPrice] = useState(""); // Храним минимальную цену для фильтрации

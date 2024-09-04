@@ -24,13 +24,9 @@ const ErrorPage = () => {
             </div>
           </div>
           <div className="content__text">
-            <h2 className={`error-${theme}`}>
-              Page Not Found
-            </h2>
-            <span className={`error-${theme}`}>
-              We're sorry, the page you requested could not be found.
-            </span>
+            <h2 className={`error-${theme}`}>Page Not Found</h2>
             <p className={`error-${theme}`}>
+              We're sorry, the page you requested could not be found. <br />
               Please go back to the homepage.
             </p>
             <Link to={"/"}>

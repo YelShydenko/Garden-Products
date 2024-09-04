@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import SectionDivider from "../SectionDivider/SectionDivider";
 import { ThemeContext } from "@/ThemeContext/ThemeContext";
 import CategoryCard from "../CategoryCard/CategoryCard";
+import Button from "../UI/Button/Button";
+import { Link } from "react-router-dom";
 
 const CategoriesMainPage = () => {
   const categories = useSelector((state) => state.products.categories); // выбираем наш массив с категориями
@@ -30,6 +32,13 @@ const CategoriesMainPage = () => {
                   theme={theme}
                 />
               ))}
+          <Link to={'/categories/all'} className="adaptive__link">
+            <Button
+              btnColor={"neutral"}
+              btnSize={"S"}
+              btnText={"All categories"}
+            />
+          </Link>
         </div>
       </div>
     </section>

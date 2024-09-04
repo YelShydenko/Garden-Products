@@ -85,6 +85,17 @@
 }
 
 
+@media (max-width: 1000px) {
+  .header{
+    padding: 30px 20px 28px;
+  }
+  .nav__menu {
+      &-list {
+        gap: 24px !important;
+      }
+    }
+}
+
 @media (max-width: 768px) {
   .nav__menu {
       &-list {
@@ -93,16 +104,12 @@
     }
 }
 
-@media (max-width: 480px) {  // нужно добавить БУРГЕР 
+
+@media (max-width: 725px) {  // нужно добавить БУРГЕР 
   .button__discount {
     display: none; 
   }
   .nav__menu {
     display: none;
   } 
-}
-@media (max-width: 360px) {  //сделано без учета бургер меню 
-  .header {
-    padding: 10px 15px; 
-  }
 }

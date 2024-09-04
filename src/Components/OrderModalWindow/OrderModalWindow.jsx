@@ -13,8 +13,10 @@ const OrderModalWindow = ({onClose}) => {
           <p className="modal__message-body">
             A manager will contact you shortly to confirm your order.
           </p>
-           </div>
-           <IoCloseOutline className="modal__close-icon" onClick={onClose}/>
+        </div>
+        <div>
+          <IoCloseOutline className="modal__close-icon" onClick={onClose} />
+        </div>
       </div>
     </div>
   );

@@ -12,16 +12,18 @@
 .title {
   font-size: nav.$section-title;
   font-weight: 700;
-  line-height: 70.4px;
 }
-.title-dark{
+
+.title-dark {
   color: nav.$font-lightColor;
 }
+
 .card_items {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 32px;
 }
+
 .footer__item {
   background-color: nav.$footer-items-bg-light;
   padding: 32px 32px;
@@ -31,7 +33,7 @@
   gap: 16px;
 }
 
-.item-dark{
+.item-dark {
   background-color: nav.$footer-items-bg-dark;
   color: nav.$font-lightColor;
 }
@@ -39,13 +41,11 @@
 .footer__item > p:first-child {
   font-size: nav.$common-text;
   font-weight: 500;
-  line-height: 26px;
   color: nav.$dark-grey;
 }
 .footer__item > p:last-child {
   font-size: nav.$footer-info-text;
   font-weight: 600;
-  line-height: 44px;
 }
 .card_items > iframe {
   width: 100%;
@@ -57,52 +57,35 @@
 .images {
   display: flex;
   gap: 18px;
-  .icon{
+  .icon {
     font-size: nav.$footer-icon-size;
   }
-  .icon-dark{
+  .icon-dark {
     color: nav.$white-color;
   }
 }
 
+@media (max-width: 1000px ) {
+  .footer__container {
+  padding: 0 20px;
+}
+}
 
+@media (max-width: 768px) {
+  .footer__item{
+    padding: 24px 20px;
+  }
+  .card_items {
+    display: flex;
+    flex-direction: column;
+  }
+}
 
-//cтарые медиа запросы
-// @media (max-width: 480px) {
-//   .footer__container {
-//     gap: 24px;
-//   }
-//   .card_items {
-//     grid-template-columns: 1fr;
-//     gap: 12px; 
-//   }
-//   .card_items > iframe {
-//     width: 440px;
-//   }
-//   .footer__item {
-//     padding: 24px 20px;
-//     gap: 12px;
-//   }
-//   .footer__item > p:first-child {
-//     font-size: 18px;
-//     line-height: 23.4px;
-//   }
-//   .footer__item > p:last-child {
-//     font-size: 28px;
-//     line-height: 30.8px;
-//   }
-//   .title > p {
-//     font-size: 40px;
-//     line-height: 44px;
-//   }
-// }
-// @media (max-width: 360px) {
-//   .card_items {
-//     grid-template-columns: 1fr;
-//   }
-//   .card_items > iframe {
-//     width: 320px;
-//   }
-// }
-
-
+@media (max-width: 520px) {
+  .footer__item > p:first-child {
+    font-size: nav.$footer-header-s;
+  }
+  .footer__item > p:last-child {
+    font-size: nav.$footer-body-s;
+  }
+}

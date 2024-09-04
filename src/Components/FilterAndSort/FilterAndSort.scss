@@ -93,7 +93,7 @@
           border: solid white;
           border-width: 0 2px 2px 0;
           transform: rotate(45deg);
-          display: none; 
+          display: none;
         }
       }
     }
@@ -106,6 +106,30 @@
       color: nav.$font-darkColor;
       font-size: nav.$small-text;
       font-weight: 500;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .filter__sort-section {
+    .page__title {
+      font-size: nav.$section-header-m;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .filter__sort-section {
+    .page__title {
+      font-size: nav.$section-header-s;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .filter__sort-section {
+    .page__title {
+      font-size: nav.$section-header-xs;
     }
   }
 }

@@ -1,14 +1,14 @@
-import { useContext } from 'react'
-import './Footer.scss'
-import { ThemeContext } from '@/ThemeContext/ThemeContext'
-import { RiInstagramFill, RiWhatsappFill } from 'react-icons/ri'
+import { useContext } from "react";
+import "./Footer.scss";
+import { ThemeContext } from "@/ThemeContext/ThemeContext";
+import { RiInstagramFill, RiWhatsappFill } from "react-icons/ri";
 
 const Footer = () => {
   const { theme } = useContext(ThemeContext); // Передаем нашу тему
   return (
     <footer className="footer__container">
-      <div className={`title title-${theme}`}>
-        <p>Contact</p>
+      <div>
+        <p className={`title title-${theme}`}>Contact</p>
       </div>
       <div className="card_items">
         <div className={`footer__item item-${theme}`}>
@@ -18,7 +18,7 @@ const Footer = () => {
         <div className={`footer__item item-${theme}`}>
           <p>Socials</p>
           <div className="images">
-            <a href="https://www.instagram.com/" >
+            <a href="https://www.instagram.com/">
               <RiInstagramFill className={`icon icon-${theme}`} />
             </a>
             <a href="https://web.whatsapp.com/">
@@ -38,6 +38,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;
