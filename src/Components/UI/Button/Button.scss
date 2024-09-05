@@ -56,3 +56,16 @@
   color: nav.$font-lightColor;
   font-weight: 500;
 }
+
+@media (max-width: 725px) {
+  .size-XS{
+    font-size: nav.$burger-menu-s;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .size-XS{
+    font-size: nav.$burger-menu-xs;
+  }
+}

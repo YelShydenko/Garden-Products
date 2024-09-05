@@ -8,11 +8,14 @@ import { ThemeContext } from "@/ThemeContext/ThemeContext";
 import { GiShoppingBag } from "react-icons/gi";
 import { useSelector } from "react-redux";
 import DailyProductModal from "../DailyProductModal/DailyProductModal";
+import { IoCloseOutline } from "react-icons/io5";
+import { AiOutlineMenu } from "react-icons/ai";
 
 const Header = () => {
   const { theme } = useContext(ThemeContext); // Передаем нашу тему
   const { favourite, cart } = useSelector((state) => state.products);
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const toggleModal = () => {
     setIsOpenModal(!isOpenModal);
@@ -93,6 +96,65 @@ const Header = () => {
             </div>
           )}
         </Link>
+        <div className="menu">
+          {isOpenMenu ? (
+            <IoCloseOutline
+              className={`menu__icon menu-${theme} menu-close`}
+              onClick={() => setIsOpenMenu(!isOpenMenu)}
+            />
+          ) : (
+            <AiOutlineMenu
+              className={`menu__icon menu-${theme}`}
+              onClick={() => setIsOpenMenu(!isOpenMenu)}
+            />
+          )}
+
+          <div
+            className={`burger__menu ${
+              isOpenMenu ? "burger__menu__active" : ""
+            }`}
+          >
+            <ul className={`nav__menu-list nav__menu-${theme} `}>
+              <li>
+                <Link to={"/"} className={`nav__menu-link menu-${theme}`}>
+                  Main Page
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={"/categories/all"}
+                  className={`nav__menu-link menu-${theme}`}
+                >
+                  Categories
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={"/products/all"}
+                  className={`nav__menu-link menu-${theme}`}
+                >
+                  All products
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={"/sale/products/all"}
+                  className={`nav__menu-link menu-${theme}`}
+                >
+                  All sales
+                </Link>
+              </li>
+              <li>
+                <Button
+                  btnColor={"green"}
+                  btnSize={"XS"}
+                  btnText={"1 day discount!"}
+                  handleOnClick={toggleModal}
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
       {isOpenModal && <DailyProductModal onClose={closeModalWindow} />}
     </header>
