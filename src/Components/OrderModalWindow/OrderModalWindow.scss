@@ -10,6 +10,7 @@
   display: flex;
   align-items: flex-start;
   z-index: 2;
+  padding: 0 20px;
 
   .modal__window {
     background-color: nav.$bg-modalwindow-message;
@@ -40,6 +41,22 @@
     .modal__close-icon {
       color: nav.$font-lightColor;
       font-size: nav.$modal-close-icon;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .modal__background {
+    .modal__window {
+      padding: 24px 20px 76px;
+      flex-wrap: wrap-reverse;
+      justify-content: end;
+      gap: 12px;
+      .modal__message {
+        .modal__message-header {
+          font-size: nav.$modal-title-s;
+        }
+      }
     }
   }
 }

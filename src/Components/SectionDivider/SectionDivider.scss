@@ -25,3 +25,40 @@
     background-color: nav.$light-grey;
   }
 }
+
+@media (max-width: 1000px) {
+  .section__header {
+    gap: 20px;
+    .section__title {
+      font-size: nav.$section-divider-title-L;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .section__header {
+    gap: 16px;
+    .section__title {
+      font-size: nav.$section-divider-title-M;
+    }
+  }
+}
+
+@media (max-width: 578px) {
+    .section__header {
+    .section__title {
+      white-space: wrap;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .section__header {
+    .section__title {
+      font-size: nav.$section-divider-title-S;
+    }
+    .section__divider {
+      display: none;
+    }
+  }
+}

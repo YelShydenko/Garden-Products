@@ -20,6 +20,9 @@
   background: none;
   border: 1px solid nav.$button-border-color;
   color: nav.$dark-grey;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .size-M {
@@ -28,9 +31,10 @@
 }
 
 .size-L {
-  padding: 16px 150px;
+  padding: 16px 0;
   font-size: nav.$common-text;
   font-weight: 600;
+  text-align: center;
 }
 
 .size-S {
@@ -51,4 +55,17 @@
 .breadcrumbs__last-dark{
   color: nav.$font-lightColor;
   font-weight: 500;
+}
+
+@media (max-width: 725px) {
+  .size-XS{
+    font-size: nav.$burger-menu-s;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .size-XS{
+    font-size: nav.$burger-menu-xs;
+  }
 }

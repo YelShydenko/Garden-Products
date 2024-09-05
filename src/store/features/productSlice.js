@@ -179,9 +179,11 @@ export const productSlice = createSlice({
     removeProductFromFavourite: (state, { payload }) => {
       // Удаление товара из избранного
       state.favourite = state.favourite.filter((item) => item.id !== payload);
+      state.filteredFavourite = state.filteredFavourite.filter((item) => item.id !== payload);
       localStorage.setItem("favourite", JSON.stringify(state.favourite));
     },
     getFavoriteFromLocalStorage: (state) => {
+      // Получение списка избранных из localStorage
       let favoriteStorage = JSON.parse(localStorage.getItem("favourite"));
       if (favoriteStorage) {
         state.favourite = [...favoriteStorage];

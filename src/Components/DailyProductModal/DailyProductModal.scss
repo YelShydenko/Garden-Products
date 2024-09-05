@@ -9,6 +9,7 @@
   width: 100%;
   height: 100%;
   z-index: 2;
+  padding: 0 20px;
 
   .day__modal-window {
     background-color: nav.$bg-modalwindow-message;
@@ -47,7 +48,7 @@
 
     .product__image {
       position: relative;
-      width: 484px;
+      max-width: 484px;
       height: 284px;
       border-bottom: 1px solid nav.$border-color-grey;
 
@@ -117,6 +118,18 @@
           color: nav.$dark-grey;
           font-weight: 500;
           text-decoration: line-through;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .day__modal-background{
+    .day__modal-window{
+      .product__image{
+        .icon{
+          display: none;
         }
       }
     }

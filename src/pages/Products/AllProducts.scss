@@ -12,3 +12,15 @@
     gap: 32px;
   }
 }
+
+@media (max-width: 1000px) {
+  .all-products {
+    padding: 40px 20px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .all-products {
+    padding: 32px 20px 0;
+  }
+}

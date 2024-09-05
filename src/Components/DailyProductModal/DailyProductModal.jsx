@@ -57,10 +57,12 @@ const DailyProductModal = ({ onClose }) => {
           <h4 className="modal__header-title">
             50% discount on product of the day!
           </h4>
-          <IoCloseOutline
-            className="day__modal-close__icon"
-            onClick={onClose}
-          />
+          <div>
+            <IoCloseOutline
+              className="day__modal-close__icon"
+              onClick={onClose}
+            />
+          </div>
         </div>
         {productOfTheDay && (
           <div className="day__product-card">

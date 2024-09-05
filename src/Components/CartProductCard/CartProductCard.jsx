@@ -25,20 +25,24 @@ const CartProductCard = ({ product }) => {
       <div className={`product__info info-${theme}`}>
         <div className="product__info-title">
           <h3 className="product-title">{product.title}</h3>
-          <IoCloseOutline
-            className="close__icon"
-            onClick={() => dispatch(removeProductFromCart(product.id))} // Чтобы удалить товар из корзины
-          />
+          <div>
+            <IoCloseOutline
+              className="close__icon"
+              onClick={() => dispatch(removeProductFromCart(product.id))} // Чтобы удалить товар из корзины
+            />
+          </div>
         </div>
         <div className="price__counter">
           <div className="cart__counter">
             <button className="counter__btn-icon">
-              <FiMinus onClick={() => dispatch(decrementProduct(product.id))} // Уменьшить к-во товара
-              /> 
+              <FiMinus
+                onClick={() => dispatch(decrementProduct(product.id))} // Уменьшить к-во товара
+              />
             </button>
             <span className="count">{product.count}</span>
             <button className="counter__btn-icon">
-              <FiPlus onClick={() => dispatch(incrementProduct(product.id))} // Увеличить к-во товара
+              <FiPlus
+                onClick={() => dispatch(incrementProduct(product.id))} // Увеличить к-во товара
               />
             </button>
           </div>
