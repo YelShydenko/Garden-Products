@@ -20,7 +20,7 @@ function CategoriesProduct() {
     ?.filter((product) => product.id === +categoryId)
     .find((product) => product.id === +categoryId);
   
-  const crumbs = [
+  const crumbs = [ // Для хлебных крошек
     { path: "/", label: "Main page" },
     { path: "/categories/all", label: "Categories" },
     { path: `/categories/${categoryId}`, label: `${title.title}`}

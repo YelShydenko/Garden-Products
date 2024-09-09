@@ -1,14 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./ProductPage.scss";
 import { useParams } from "react-router-dom";
-import {
-  decrementProduct,
-  fetchProductsById,
-  incrementProduct,
-  addProductToCart,
-  setFavourite,
-  removeProductFromFavourite,
-} from "@/store/features/productSlice";
+import { decrementProduct, fetchProductsById, incrementProduct, addProductToCart, setFavourite, removeProductFromFavourite } from "@/store/features/productSlice";
 import { useContext, useEffect, useState } from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import Button from "@/Components/UI/Button/Button";
@@ -16,20 +9,17 @@ import { IoMdHeart } from "react-icons/io";
 import { ThemeContext } from "@/ThemeContext/ThemeContext";
 import ZoomPhoto from "@/Components/ZoomPhoto/ZoomPhoto";
 import Breadcrumbs from "@/Components/Breadcrumbs/Breadcrumbs";
-import ProductSkeleton from "../../Components/ProductSkeleton/ProductSkeleton";
+import ProductSkeleton from "@/Components/ProductSkeleton/ProductSkeleton";
 
 const ProductPage = () => {
   const { productId } = useParams(); // Извлечение ID продукта из URL
   const dispatch = useDispatch();
-  const { product, cart, favourite, categories, loading } = useSelector(
-    (state) => state.products
-  ); // Доступ к данным продукта и корзины из Redux
+  const { product, cart, favourite, categories, loading } = useSelector((state) => state.products); // Доступ к данным продукта и корзины из Redux
   const { theme } = useContext(ThemeContext); // Использование темы
   const [count, setCount] = useState(1); // Состояние для управления количеством товара
   const [isZoomed, setisZoomed] = useState(false); // Состояние для управления модальным окном изображения
 
-  const isProductFavourite =
-    product && favourite.some((item) => item.id === product.id); // Проверяем, есть ли товар в избранном
+  const isProductFavourite = product && favourite.some((item) => item.id === product.id); // Проверяем, есть ли товар в избранном
 
   const categoryId = product ? product.categoryId : null;
 
@@ -37,7 +27,7 @@ const ProductPage = () => {
     ?.filter((product) => product.id === +categoryId)
     .find((product) => product.id === +categoryId);
 
-  const crumbs = [
+  const crumbs = [ // Для хлебных крошек
     { path: "/", label: "Main page" },
     { path: "/categories/all", label: "Categories" },
     { path: `/categories/${categoryId}`, label: `${title?.title}` },

@@ -6,9 +6,9 @@ import { ThemeContext } from '@/ThemeContext/ThemeContext';
 import Breadcrumbs from "@/Components/Breadcrumbs/Breadcrumbs";
 
 const CategoriesPage = () => {
-  const { categories } = useSelector((state) => state.products)
-  const { theme } = useContext(ThemeContext)
-  const crumbs = [
+  const { categories } = useSelector((state) => state.products) // Выбираем наш массив с продуктами
+  const { theme } = useContext(ThemeContext) // Получаем нашу тему
+  const crumbs = [ // Для хлебных крошек
     { path: "/", label: "Main page" },
     { path: "/categories/all", label: "Categories" },
   ];

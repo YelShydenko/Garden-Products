@@ -22,7 +22,7 @@
   .discount__badge {
     background-color: nav.$sale-color;
     color: nav.$font-lightColor;
-    font-weight: 600;
+    font-weight: nav.$font-weight-semi-bold;
     font-size: nav.$common-text;
     padding: 4px 8px;
     border-radius: nav.$radius-small;
@@ -41,25 +41,19 @@
 
     .icon {
       font-size: nav.$icons-size;
-      color: nav.$font-lightColor;
-      stroke: nav.$font-darkColor; 
+      fill: nav.$font-lightColor;
+      stroke: nav.$font-darkColor;
       stroke-width: 20px;
+
       &:hover {
-        color: nav.$font-darkColor;
+        fill: nav.$font-darkColor;
       }
     }
 
-    .icon__in-cart{
-      color: nav.$green-color;
+    .icon__in-cart, .icon__favourite {
+      fill: nav.$green-color;
       stroke: none;
     }
-
-    .icon__favourite{
-      color: nav.$green-color;
-      stroke: none;
-    }
-
-
   }
 
   .product__info {
@@ -75,7 +69,7 @@
 
   .product__name {
     font-size: nav.$common-text;
-    font-weight: 600;
+    font-weight: nav.$font-weight-semi-bold;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -88,14 +82,14 @@
 
     .product__price {
       font-size: nav.$price-text;
-      font-weight: 600;
+      font-weight: nav.$font-weight-semi-bold;
       color: nav.$font-darkColor;
     }
 
     .original__price {
       font-size: nav.$common-text;
       color: nav.$dark-grey;
-      font-weight: 500;
+      font-weight: nav.$font-weight-medium;
       text-decoration: line-through;
     }
 

@@ -34,7 +34,7 @@
 
       .product-title {
         font-size: nav.$common-text;
-        font-weight: 500;
+        font-weight: nav.$font-weight-medium;
         max-width: 476px;
         white-space: nowrap;
         overflow: hidden;
@@ -61,7 +61,7 @@
 
         .counter__btn-icon {
           padding: 17px;
-          font-size: 24px;
+          font-size: nav.$cart-counter-icon;
           color: nav.$font-greyColor;
           background: none;
           border: 1px solid nav.$border-color-grey;
@@ -73,7 +73,7 @@
         .count {
           padding: 16px 44px;
           font-size: nav.$common-text;
-          font-weight: 600;
+          font-weight: nav.$font-weight-semi-bold;
         }
       }
 
@@ -86,14 +86,16 @@
           text-decoration: line-through;
           font-size: nav.$common-text;
           color: nav.$font-greyColor;
-          font-weight: 500;
+          font-weight: nav.$font-weight-medium;
         }
       }
+
       .product__price {
         font-size: nav.$price-text;
-        font-weight: 600;
+        font-weight: nav.$font-weight-semi-bold;
         color: nav.$font-darkColor;
       }
+
       .price-dark {
         color: nav.$font-lightColor;
       }
@@ -118,11 +120,13 @@
     .product__info {
       gap: 12px;
       padding: 20px;
+
       .product__info-title {
         .product-title {
           white-space: wrap;
         }
       }
+
       .price__counter {
         flex-direction: column;
         align-items: start;
@@ -155,11 +159,13 @@
           max-width: 150px;
         }
       }
+
       .price__counter {
         .cart__counter {
           .counter__btn-icon {
             padding: 11px;
           }
+
           .count {
             padding: 12px 20px;
           }
@@ -176,6 +182,7 @@
         .product__pricing {
           flex-direction: column;
         }
+
         .product__price {
           font-size: nav.$cart-price-s;
         }
@@ -193,6 +200,7 @@
         object-fit: cover;
       }
     }
+    
     .product__info {
       .product__info-title {
         .product-title {

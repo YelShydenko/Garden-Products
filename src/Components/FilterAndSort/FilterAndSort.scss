@@ -7,7 +7,7 @@
 
   .page__title {
     font-size: nav.$section-title;
-    font-weight: 700;
+    font-weight: nav.$font-weight-bold;
     color: nav.$font-darkColor;
   }
 
@@ -30,7 +30,7 @@
       .price__label,
       .discount__filter-check,
       .sort__label {
-        font-weight: 600;
+        font-weight: nav.$font-weight-semi-bold;
         color: nav.$font-darkColor;
         font-size: nav.$common-text;
       }
@@ -47,7 +47,7 @@
       border: 1px solid nav.$border-color-grey;
       border-radius: nav.$radius-small;
       font-size: nav.$small-text;
-      font-weight: 500;
+      font-weight: nav.$font-weight-medium;
 
       &::placeholder {
         color: nav.$font-greyColor;
@@ -105,7 +105,7 @@
       border-radius: nav.$radius-small;
       color: nav.$font-darkColor;
       font-size: nav.$small-text;
-      font-weight: 500;
+      font-weight: nav.$font-weight-medium;
     }
   }
 }

@@ -32,9 +32,12 @@
 
       .modal__message-header {
         font-size: nav.$cart-form-text;
+        font-weight: nav.$font-weight-semi-bold;
       }
+
       .modal__message-body {
         font-size: nav.$common-text;
+        font-weight: nav.$font-weight-semi-bold;
       }
     }
 
@@ -52,6 +55,7 @@
       flex-wrap: wrap-reverse;
       justify-content: end;
       gap: 12px;
+
       .modal__message {
         .modal__message-header {
           font-size: nav.$modal-title-s;

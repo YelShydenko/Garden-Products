@@ -8,9 +8,7 @@ import Button from "../UI/Button/Button";
 const SaleProducts = () => {
   const products = useSelector((state) => state.products.products); // выбираем наш массив с товарами
 
-  const discountedProducts = products.filter(
-    (product) => product.discont_price !== null
-  ); // Фильтруем наши товары со скидкой
+  const discountedProducts = products.filter((product) => product.discont_price !== null); // Фильтруем наши товары со скидкой
   
   // Перемешиваем массив и выбираем 4 случайных товара
   const shuffledProducts = [...discountedProducts]

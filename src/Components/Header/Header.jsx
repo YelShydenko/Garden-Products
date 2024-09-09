@@ -12,10 +12,10 @@ import { IoCloseOutline } from "react-icons/io5";
 import { AiOutlineMenu } from "react-icons/ai";
 
 const Header = () => {
-  const { theme } = useContext(ThemeContext); // Передаем нашу тему
-  const { favourite, cart } = useSelector((state) => state.products);
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const { theme } = useContext(ThemeContext); // Получаем нашу тему
+  const { favourite, cart } = useSelector((state) => state.products); // Выбираем наши массивы избранных и корзины
+  const [isOpenModal, setIsOpenModal] = useState(false); // Для управления модальным окном
+  const [isOpenMenu, setIsOpenMenu] = useState(false); // Для управления бургер меню при адаптиве
 
   const toggleModal = () => {
     setIsOpenModal(!isOpenModal);
@@ -96,7 +96,8 @@ const Header = () => {
             </div>
           )}
         </Link>
-        <div className="menu">
+        <div className="menu"> 
+          {/* Отображается при размере 725px */}
           {isOpenMenu ? (
             <IoCloseOutline
               className={`menu__icon menu-${theme} menu-close`}
