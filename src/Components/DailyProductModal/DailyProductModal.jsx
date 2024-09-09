@@ -4,16 +4,12 @@ import Button from "../UI/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { IoCloseOutline } from "react-icons/io5";
 import { IoMdHeart } from "react-icons/io";
-import {
-  addProductToCart,
-  setFavourite,
-  removeProductFromFavourite,
-} from "@/store/features/productSlice";
+import { addProductToCart, setFavourite, removeProductFromFavourite } from "@/store/features/productSlice";
 
 const DailyProductModal = ({ onClose }) => {
   const dispatch = useDispatch();
-  const { products, favourite } = useSelector((state) => state.products);
-  const [productOfTheDay, setProductOfTheDay] = useState(null);
+  const { products, favourite } = useSelector((state) => state.products); // Выбираем наш массив с продуктами и избранными
+  const [productOfTheDay, setProductOfTheDay] = useState(null); // Для управления продуктом дня
 
   useEffect(() => {
     if (products.length > 0) {
@@ -25,14 +21,12 @@ const DailyProductModal = ({ onClose }) => {
     }
   }, [products]);
 
-  const isProductFavourite = favourite.some(
-    (item) => item.id === productOfTheDay?.id
-  ); // Проверяем, есть ли товар в избранном для стиля иконки
+  const isProductFavourite = favourite.some((item) => item.id === productOfTheDay?.id); // Проверяем, есть ли товар в избранном для стиля иконки
 
   const handleAddToCart = () => {
     if (productOfTheDay) {
       dispatch(
-        addProductToCart({
+        addProductToCart({ // Добавление товара в корзину
           ...productOfTheDay,
           discont_price: productOfTheDay.discont_price, // Сохраняем скидочную цену
         })
@@ -57,10 +51,12 @@ const DailyProductModal = ({ onClose }) => {
           <h4 className="modal__header-title">
             50% discount on product of the day!
           </h4>
-          <IoCloseOutline
-            className="day__modal-close__icon"
-            onClick={onClose}
-          />
+          <div>
+            <IoCloseOutline
+              className="day__modal-close__icon"
+              onClick={onClose}
+            />
+          </div>
         </div>
         {productOfTheDay && (
           <div className="day__product-card">
@@ -73,8 +69,8 @@ const DailyProductModal = ({ onClose }) => {
               <IoMdHeart
                 className={`icon ${
                   isProductFavourite ? "icon__favourite" : ""
-                }`} // Меняет класс иконки в зависимости от избранного
-                onClick={handleFavouriteToggle} // Подключаем обработчик клика
+                }`} // Меняет класс иконки в зависимости товар в избранном или нет
+                onClick={handleFavouriteToggle} 
               />
             </div>
             <div className="product__description">

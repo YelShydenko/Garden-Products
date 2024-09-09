@@ -1,14 +1,26 @@
-@use "@/assets/styles/variables.scss" as nav; // импорт для переменных 
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных
 
-.sale__products-page{
-    padding: 40px 40px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+.sale__products-page {
+  padding: 40px 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 
-    .sale__product-list{
-        display: grid;
-        grid-template-columns:repeat(auto-fill, minmax(316px, 1fr));
-        gap: 32px;
-    }
+  .sale__product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(316px, 1fr));
+    gap: 32px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .sale__products-page {
+    padding: 40px 20px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .sale__products-page {
+    padding: 32px 20px 0;
+  }
 }

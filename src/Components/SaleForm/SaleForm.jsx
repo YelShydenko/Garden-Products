@@ -5,7 +5,7 @@ import Input from "../UI/Input/Input";
 import Button from "../UI/Button/Button";
 
 const SaleForm = () => {
-  const [submitMessage, setSubmitMessage] = useState("");
+  const [submitMessage, setSubmitMessage] = useState(""); // Для подтверждающего сообщения
 
   const {
     register,
@@ -26,7 +26,13 @@ const SaleForm = () => {
     <section className="sale__form-section">
       <h3>5% off on the first order</h3>
       <div className="sale__form-container">
-        <img src="./images/handsForm.png" alt="image" className="sale__form-image" />
+        <div className="sale__form-image__container">
+          <img
+            src="./images/handsForm.png"
+            alt="image"
+            className="sale__form-image"
+          />
+        </div>
         <form className="sale__form" onSubmit={handleSubmit(onSubmit)}>
           <div className="sale__form-inputs">
             <div className="input__container">
@@ -81,7 +87,12 @@ const SaleForm = () => {
               )}
             </div>
           </div>
-          <Button type="submit" btnColor={'white'} btnText={'Get a discount'} btnSize={'L'} />
+          <Button
+            type="submit"
+            btnColor={"white"}
+            btnText={"Get a discount"}
+            btnSize={"L"}
+          />
         </form>
       </div>
     </section>

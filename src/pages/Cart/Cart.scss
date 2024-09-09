@@ -1,7 +1,7 @@
 @use "@/assets/styles/variables.scss" as nav; // импорт для переменных
 
 .cart__page {
-  padding: 40px 40px 0; 
+  padding: 40px 40px 0;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -21,7 +21,7 @@
       background-color: nav.$cart-form-bg-light;
       font-size: nav.$cart-form-text;
       color: nav.$font-greyColor;
-      font-weight: 500;
+      font-weight: nav.$font-weight-medium;
       border-radius: nav.$radius-big;
       height: 100%;
       width: 100%;
@@ -33,7 +33,7 @@
 
         &-header {
           color: nav.$font-darkColor;
-          font-weight: 700;
+          font-weight: nav.$font-weight-bold;
         }
       }
 
@@ -44,7 +44,7 @@
 
         .total__price {
           color: nav.$font-darkColor;
-          font-weight: 700;
+          font-weight: nav.$font-weight-bold;
           font-size: nav.$cart-total-price-text;
         }
       }
@@ -59,6 +59,7 @@
           display: flex;
           flex-direction: column;
           gap: 16px;
+
           .order__error-message {
             font-size: nav.$common-text;
             color: nav.$error-color;
@@ -87,11 +88,71 @@
     flex-direction: column;
     align-items: start;
     gap: 32px;
+
     &-info {
       font-size: nav.$common-text;
     }
+
     .info-dark {
       color: nav.$font-light-grey;
+    }
+  }
+}
+
+@media (max-width: 1340px) {
+  .cart__page {
+    .cart__container {
+      justify-content: space-between;
+      gap: 20px;
+
+      .cart__form {
+        width: 470px;
+        padding: 32px 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1040px) {
+  .cart__page {
+    padding: 40px 20px 0;
+
+    .cart__container {
+      flex-direction: column;
+
+      .cart__form {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .cart__page {
+    padding: 32px 20px 0;
+    
+    .cart__container {
+      .cart__form {
+        .total__price-container{
+          .total__price{
+            font-size: nav.$price-s;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .cart__page {
+    .cart__container {
+      .cart__form {
+        .total__price-container{
+          .total__price{
+            font-size: nav.$price-xs;
+          }
+        }
+      }
     }
   }
 }

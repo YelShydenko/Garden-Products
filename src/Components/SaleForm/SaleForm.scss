@@ -1,33 +1,39 @@
-@use "@/assets/styles/variables.scss" as nav; // импорт для переменных 
+@use "@/assets/styles/variables.scss" as nav; // импорт для переменных
 
 .sale__form {
   display: flex;
   flex-direction: column;
+  gap: 32px;
   width: 100%;
-  
+  max-width: 516px;
+  padding-bottom: 32px;
+
   &-inputs {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: 32px 0;
-    .input__container{
+    padding-top: 32px;
+
+    .input__container {
       display: flex;
       flex-direction: column;
     }
   }
 
   &-section {
-    background: linear-gradient(80.46deg, #87933d -0.68%, #55610b 66.66%);
-    padding: 32px 32px 0;
+    background: nav.$bg-sale-form;
+    padding: 32px 32px 0 0;
     border-radius: nav.$radius-big;
     display: flex;
     flex-direction: column;
     text-align: center;
     gap: 24px;
     margin-bottom: 108px;
+    overflow: hidden;
+
     h3 {
       font-size: nav.$section-title;
-      font-weight: 700;
+      font-weight: nav.$font-weight-bold;
       color: nav.$font-lightColor;
     }
   }
@@ -35,32 +41,52 @@
   &-container {
     display: flex;
     gap: 32px;
+
+    .sale__form-image__container {
+      max-width: 748px;
+      max-height: 360px;
+
+      .sale__form-image {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+    }
   }
 
-  .error-message{
+  .error-message {
     font-size: nav.$small-text;
-    font-weight: 500;
+    font-weight: nav.$font-weight-medium;
     color: nav.$error-color;
     margin-top: 8px;
     text-align: start;
   }
 
-  .submit__message{
+  .submit__message {
     margin-top: 8px;
     color: nav.$font-lightColor;
     font-size: nav.$small-text;
-    font-weight: 500;
+    font-weight: nav.$font-weight-medium;
     text-align: start;
   }
 }
 
 @media (max-width: 768px) {
-.sale__form-container {
-  flex-wrap: wrap-reverse;
+  .sale__form-section {
+    padding: 24px 20px 0;
 
-  img {
-    max-width: 600px;
+    h3 {
+      font-size: nav.$sale-form-S;
+    }
+
+    .sale__form-container {
+      flex-wrap: wrap-reverse;
+      justify-content: center;
+    }
+    
+    .sale__form-inputs {
+      padding: 0;
+    }
   }
 }
-}
-

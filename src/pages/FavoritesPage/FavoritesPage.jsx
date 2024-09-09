@@ -20,11 +20,11 @@ const FavoritesPage = () => {
 
   const { theme } = useContext(ThemeContext); // Выбор нашей темы
 
-  const crumbs = [
+  const crumbs = [ // Для хлебных крошек
     { path: "/", label: "Main page" },
     { path: "/favorites", label: "Liked products" },
   ];
-
+  
   return (
     <section className="favorite__product-section">
       <Breadcrumbs crumbs={crumbs}/>
@@ -36,7 +36,7 @@ const FavoritesPage = () => {
 
       {favourite.length > 0 ? (
         <div className="favorite__product-list">
-          {loading || favourite.length === 0 ? ( 
+          {loading ? ( 
             <ProductSkeleton /> 
           ) : ( 
             favourite.map((product) => ( 

@@ -14,7 +14,7 @@ function AllProducts() {
 
   const loading = useSelector((state) => state.products.loading);
   
-   const crumbs = [
+   const crumbs = [ // Для хлебных крошек
      { path: "/", label: "Main page" },
      { path: "/products/all", label: "All products" },
    ];

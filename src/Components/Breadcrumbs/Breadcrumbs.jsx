@@ -6,6 +6,7 @@ import { ThemeContext } from "@/ThemeContext/ThemeContext";
 
 const Breadcrumbs = ({ crumbs }) => {
   const { theme } = useContext(ThemeContext);
+
   return (
     <div className="breadcrumbs">
       {crumbs.map((crumb, index) => {

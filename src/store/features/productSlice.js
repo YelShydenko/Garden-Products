@@ -64,10 +64,31 @@ export const productSlice = createSlice({
         state.filteredProducts.length > 0
           ? state.filteredProducts
           : state.products;
+
       if (payload.value === "low-to-high") {
-        state.filteredProducts = data.sort((a, b) => a.price - b.price);
+        state.filteredProducts = data.sort((a, b) => {
+          const priceA =
+            a.discont_price !== null && a.discont_price > 0
+              ? a.discont_price
+              : a.price;
+          const priceB =
+            b.discont_price !== null && b.discont_price > 0
+              ? b.discont_price
+              : b.price;
+          return priceA - priceB;
+        });
       } else if (payload.value === "high-to-low") {
-        state.filteredProducts = data.sort((a, b) => b.price - a.price);
+        state.filteredProducts = data.sort((a, b) => {
+          const priceA =
+            a.discont_price !== null && a.discont_price > 0
+              ? a.discont_price
+              : a.price;
+          const priceB =
+            b.discont_price !== null && b.discont_price > 0
+              ? b.discont_price
+              : b.price;
+          return priceB - priceA;
+        });
       } else if (payload.value === "discount") {
         state.filteredProducts = data.filter(
           (product) => product.discont_price !== null
@@ -82,10 +103,31 @@ export const productSlice = createSlice({
         state.filteredFavourite.length > 0
           ? state.filteredFavourite
           : state.favourite;
+
       if (payload.value === "low-to-high") {
-        state.filteredFavourite = data.sort((a, b) => a.price - b.price);
+        state.filteredFavourite = data.sort((a, b) => {
+          const priceA =
+            a.discont_price !== null && a.discont_price > 0
+              ? a.discont_price
+              : a.price;
+          const priceB =
+            b.discont_price !== null && b.discont_price > 0
+              ? b.discont_price
+              : b.price;
+          return priceA - priceB;
+        });
       } else if (payload.value === "high-to-low") {
-        state.filteredFavourite = data.sort((a, b) => b.price - a.price);
+        state.filteredFavourite = data.sort((a, b) => {
+          const priceA =
+            a.discont_price !== null && a.discont_price > 0
+              ? a.discont_price
+              : a.price;
+          const priceB =
+            b.discont_price !== null && b.discont_price > 0
+              ? b.discont_price
+              : b.price;
+          return priceB - priceA;
+        });
       } else if (payload.value === "discount") {
         state.filteredFavourite = data.filter(
           (product) => product.discont_price !== null
@@ -97,22 +139,32 @@ export const productSlice = createSlice({
     filterByPrice: (state, { payload }) => {
       // Фильтрация
       const { minPrice, maxPrice, discount } = payload;
-      state.filteredProducts = state.products.filter(
-        (item) =>
-          item.price >= minPrice &&
-          item.price <= maxPrice &&
+      state.filteredProducts = state.products.filter((item) => {
+        const priceToCheck =
+          item.discont_price !== null && item.discont_price > 0
+            ? item.discont_price
+            : item.price;
+        return (
+          priceToCheck >= minPrice &&
+          priceToCheck <= maxPrice &&
           (!discount || item.discont_price !== null)
-      );
+        );
+      });
     },
     filterFavourite: (state, { payload }) => {
       // Фильтрация избранных товаров
       const { minPrice, maxPrice, discount } = payload;
-      state.filteredFavourite = state.favourite.filter(
-        (item) =>
-          item.price >= minPrice &&
-          item.price <= maxPrice &&
+      state.filteredFavourite = state.favourite.filter((item) => {
+        const priceToCheck =
+          item.discont_price !== null && item.discont_price > 0
+            ? item.discont_price
+            : item.price;
+        return (
+          priceToCheck >= minPrice &&
+          priceToCheck <= maxPrice &&
           (!discount || item.discont_price !== null)
-      );
+        );
+      });
     },
     addProductToCart: (state, { payload }) => {
       // Добавление товара в корзину
@@ -179,9 +231,13 @@ export const productSlice = createSlice({
     removeProductFromFavourite: (state, { payload }) => {
       // Удаление товара из избранного
       state.favourite = state.favourite.filter((item) => item.id !== payload);
+      state.filteredFavourite = state.filteredFavourite.filter(
+        (item) => item.id !== payload
+      );
       localStorage.setItem("favourite", JSON.stringify(state.favourite));
     },
     getFavoriteFromLocalStorage: (state) => {
+      // Получение списка избранных из localStorage
       let favoriteStorage = JSON.parse(localStorage.getItem("favourite"));
       if (favoriteStorage) {
         state.favourite = [...favoriteStorage];

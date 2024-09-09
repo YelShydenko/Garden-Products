@@ -19,3 +19,9 @@
     color: nav.$font-darkColor;
   }
 }
+
+@media (max-width: 640px) {
+  .breadcrumbs{
+    display: none;
+  }
+}

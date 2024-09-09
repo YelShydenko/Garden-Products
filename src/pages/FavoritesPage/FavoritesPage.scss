@@ -17,11 +17,25 @@
     flex-direction: column;
     align-items: start;
     gap: 32px;
+
     &-info {
       font-size: nav.$common-text;
     }
+    
     .info-dark {
       color: nav.$font-light-grey;
     }
+  }
+}
+
+@media (max-width: 1000px) {
+  .favorite__product-section {
+    padding: 40px 20px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .favorite__product-section {
+    padding: 32px 20px 0;
   }
 }

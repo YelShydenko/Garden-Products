@@ -5,17 +5,13 @@ import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "@/ThemeContext/ThemeContext";
 import { filterFavourite, sortFavourite } from "@/store/features/productSlice";
 
-const FilterAndSort = ({
-  pageTitle,
-  showDiscountFilter = true,
-  isFavouritePage = false,
-}) => {
+const FilterAndSort = ({ pageTitle, showDiscountFilter = true, isFavouritePage = false }) => {
   const { theme } = useContext(ThemeContext); // Выбор нашей темы
   const dispatch = useDispatch();
   const [minPrice, setMinPrice] = useState(""); // Храним минимальную цену для фильтрации
   const [maxPrice, setMaxPrice] = useState(""); // Храним максимальную цену для фильтрации
   const [isDiscounted, setIsDiscounted] = useState(false); // Храним состояние чекбокса
-  const [select, setSelect] = useState("default");
+  const [select, setSelect] = useState("default"); // Для сортировки
 
   // Обработчик сортировки
   const handleSort = (e) => {
@@ -34,14 +30,18 @@ const FilterAndSort = ({
         filterFavourite({
           minPrice: min,
           maxPrice: max,
-          discount: isDiscounted,
+          discount: isDiscounted
         })
       );
       dispatch(sortFavourite({ value: select }));
     } else {
       // Если это страница обычных товаров
       dispatch(
-        filterByPrice({ minPrice: min, maxPrice: max, discount: isDiscounted })
+        filterByPrice({
+          minPrice: min,
+          maxPrice: max,
+          discount: isDiscounted
+        })
       );
       dispatch(sortBy({ value: select }));
     }

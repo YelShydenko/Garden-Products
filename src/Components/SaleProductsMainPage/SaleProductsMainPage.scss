@@ -11,3 +11,16 @@
     gap: 32px;
   }
 }
+
+
+@media (min-width: 481px) {
+  .adaptive__link{
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .adaptive__link{
+    text-align: center;
+  }
+}
