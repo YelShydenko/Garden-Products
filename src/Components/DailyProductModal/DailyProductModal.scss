@@ -31,7 +31,7 @@
 
       .modal__header-title {
         font-size: nav.$modal-title;
-        font-weight: 600;
+        font-weight: nav.$font-weight-semi-bold;
         max-width: 424px;
       }
 
@@ -62,7 +62,7 @@
       .discount__badge {
         background-color: nav.$sale-color;
         color: nav.$font-lightColor;
-        font-weight: 600;
+        font-weight: nav.$font-weight-semi-bold;
         font-size: nav.$common-text;
         padding: 4px 8px;
         border-radius: nav.$radius-small;
@@ -98,7 +98,7 @@
 
       &-name {
         font-size: nav.$common-text;
-        font-weight: 500;
+        font-weight: nav.$font-weight-medium;
         color: nav.$font-darkColor;
       }
 
@@ -109,14 +109,14 @@
 
         .product__price {
           font-size: nav.$price-text;
-          font-weight: 600;
+          font-weight: nav.$font-weight-semi-bold;
           color: nav.$font-darkColor;
         }
 
         .original__price {
           font-size: nav.$common-text;
           color: nav.$dark-grey;
-          font-weight: 500;
+          font-weight: nav.$font-weight-medium;
           text-decoration: line-through;
         }
       }

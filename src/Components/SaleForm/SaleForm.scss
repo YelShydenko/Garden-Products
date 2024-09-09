@@ -21,7 +21,7 @@
   }
 
   &-section {
-    background: linear-gradient(80.46deg, #87933d -0.68%, #55610b 66.66%);
+    background: nav.$bg-sale-form;
     padding: 32px 32px 0 0;
     border-radius: nav.$radius-big;
     display: flex;
@@ -33,7 +33,7 @@
 
     h3 {
       font-size: nav.$section-title;
-      font-weight: 700;
+      font-weight: nav.$font-weight-bold;
       color: nav.$font-lightColor;
     }
   }
@@ -57,7 +57,7 @@
 
   .error-message {
     font-size: nav.$small-text;
-    font-weight: 500;
+    font-weight: nav.$font-weight-medium;
     color: nav.$error-color;
     margin-top: 8px;
     text-align: start;
@@ -67,7 +67,7 @@
     margin-top: 8px;
     color: nav.$font-lightColor;
     font-size: nav.$small-text;
-    font-weight: 500;
+    font-weight: nav.$font-weight-medium;
     text-align: start;
   }
 }
@@ -75,13 +75,16 @@
 @media (max-width: 768px) {
   .sale__form-section {
     padding: 24px 20px 0;
+
     h3 {
       font-size: nav.$sale-form-S;
     }
+
     .sale__form-container {
       flex-wrap: wrap-reverse;
       justify-content: center;
     }
+    
     .sale__form-inputs {
       padding: 0;
     }

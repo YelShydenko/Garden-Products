@@ -21,7 +21,7 @@
       background-color: nav.$cart-form-bg-light;
       font-size: nav.$cart-form-text;
       color: nav.$font-greyColor;
-      font-weight: 500;
+      font-weight: nav.$font-weight-medium;
       border-radius: nav.$radius-big;
       height: 100%;
       width: 100%;
@@ -33,7 +33,7 @@
 
         &-header {
           color: nav.$font-darkColor;
-          font-weight: 700;
+          font-weight: nav.$font-weight-bold;
         }
       }
 
@@ -44,7 +44,7 @@
 
         .total__price {
           color: nav.$font-darkColor;
-          font-weight: 700;
+          font-weight: nav.$font-weight-bold;
           font-size: nav.$cart-total-price-text;
         }
       }
@@ -104,6 +104,7 @@
     .cart__container {
       justify-content: space-between;
       gap: 20px;
+
       .cart__form {
         width: 470px;
         padding: 32px 20px;
@@ -115,8 +116,10 @@
 @media (max-width: 1040px) {
   .cart__page {
     padding: 40px 20px 0;
+
     .cart__container {
       flex-direction: column;
+
       .cart__form {
         width: 100%;
       }
@@ -127,6 +130,7 @@
 @media (max-width: 768px) {
   .cart__page {
     padding: 32px 20px 0;
+    
     .cart__container {
       .cart__form {
         .total__price-container{

@@ -12,7 +12,7 @@
 
     h1 {
       font-size: nav.$main-big-title;
-      font-weight: 700;
+      font-weight: nav.$font-weight-bold;
       margin-bottom: 40px;
       white-space: nowrap;
     }
@@ -33,9 +33,10 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1000px) {
+@media (max-width: 1000px) {
   .banner {
     &__content {
+
       h1 {
         font-size: nav.$banner-M;
       }
@@ -47,6 +48,7 @@
   .banner {
     height: 600px;
   }
+
   .banner__content h1 {
     font-size: nav.$banner-S;
     white-space: wrap;

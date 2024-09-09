@@ -5,7 +5,7 @@ import Input from "../UI/Input/Input";
 import Button from "../UI/Button/Button";
 
 const SaleForm = () => {
-  const [submitMessage, setSubmitMessage] = useState("");
+  const [submitMessage, setSubmitMessage] = useState(""); // Для подтверждающего сообщения
 
   const {
     register,

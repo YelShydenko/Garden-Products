@@ -11,7 +11,7 @@
 
   &__section-title {
     font-size: nav.$section-title;
-    font-weight: 700;
+    font-weight: nav.$font-weight-bold;
     color: nav.$font-darkColor;
   }
 
@@ -41,6 +41,7 @@
 @media (max-width: 768px) {
   .categories__page-section {
     padding: 32px 20px 0;
+    
     .categories__section-title {
       font-size: nav.$section-header-m;
     }

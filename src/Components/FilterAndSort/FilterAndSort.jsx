@@ -11,7 +11,7 @@ const FilterAndSort = ({ pageTitle, showDiscountFilter = true, isFavouritePage =
   const [minPrice, setMinPrice] = useState(""); // Храним минимальную цену для фильтрации
   const [maxPrice, setMaxPrice] = useState(""); // Храним максимальную цену для фильтрации
   const [isDiscounted, setIsDiscounted] = useState(false); // Храним состояние чекбокса
-  const [select, setSelect] = useState("default");
+  const [select, setSelect] = useState("default"); // Для сортировки
 
   // Обработчик сортировки
   const handleSort = (e) => {
@@ -30,14 +30,18 @@ const FilterAndSort = ({ pageTitle, showDiscountFilter = true, isFavouritePage =
         filterFavourite({
           minPrice: min,
           maxPrice: max,
-          discount: isDiscounted,
+          discount: isDiscounted
         })
       );
       dispatch(sortFavourite({ value: select }));
     } else {
       // Если это страница обычных товаров
       dispatch(
-        filterByPrice({ minPrice: min, maxPrice: max, discount: isDiscounted })
+        filterByPrice({
+          minPrice: min,
+          maxPrice: max,
+          discount: isDiscounted
+        })
       );
       dispatch(sortBy({ value: select }));
     }

@@ -5,15 +5,10 @@ import { ThemeProvider } from "./ThemeContext/ThemeContext";
 import Layout from "./Components/Layout/Layout";
 import CategoriesProduct from "./pages/CategoriesProduct/CategoriesProduct";
 import SaleProductsPage from "./pages/SaleProductsPage/SaleProductsPage";
-import AllProducts from "./pages/Products/AllProducts";
+import AllProducts from "./pages/AllProducts/AllProducts";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import {
-  fetchCategories,
-  fetchProducts,
-  getCartFromLocalStorage,
-  getFavoriteFromLocalStorage,
-} from "./store/features/productSlice";
+import { fetchCategories, fetchProducts, getCartFromLocalStorage, getFavoriteFromLocalStorage } from "./store/features/productSlice";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Cart from "./pages/Cart/Cart";
 import ProductPage from "./pages/ProductPage/ProductPage";

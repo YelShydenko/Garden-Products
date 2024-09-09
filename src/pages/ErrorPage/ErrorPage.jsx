@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { ThemeContext } from "@/ThemeContext/ThemeContext";
 
 const ErrorPage = () => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext); // Выбор нашей темы
   return (
     <>
       <div className="not-found__content">

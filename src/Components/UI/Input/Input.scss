@@ -10,6 +10,7 @@
 .sale__form-control {
   background: none;
   border-color: nav.$border-color-white;
+
   &::placeholder {
     color: nav.$font-lightColor;
   }
@@ -18,6 +19,7 @@
 .order__form-control {
    background-color: nav.$bg-color-white;
    border-color: nav.$border-color-grey;
+   
    &::placeholder {
     color: nav.$font-greyColor;
   }

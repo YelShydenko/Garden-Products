@@ -10,7 +10,7 @@ import { removeProductFromCart } from "@/store/features/productSlice";
 import { setFavourite, removeProductFromFavourite } from "@/store/features/productSlice";
 
 const ProductCard = ({ product }) => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext); // Получаем нашу тему
   const dispatch = useDispatch();
   const {cart, favourite} = useSelector((state) => state.products); // Получаем корзинy из productSlice
 
@@ -54,7 +54,7 @@ const ProductCard = ({ product }) => {
         <div className="product__image-icons">
         <IoMdHeart
             className={`icon ${isProductFavourite ? "icon__favourite" : ""}`} // Меняет класс иконки в зависимости от избранного
-            onClick={handleFavouriteToggle}  // Подключаем обработчик клика
+            onClick={handleFavouriteToggle}
           />
           <GiShoppingBag
             className={`icon ${isProductInCart ? "icon__in-cart" : ""}`}

@@ -20,7 +20,7 @@ const FavoritesPage = () => {
 
   const { theme } = useContext(ThemeContext); // Выбор нашей темы
 
-  const crumbs = [
+  const crumbs = [ // Для хлебных крошек
     { path: "/", label: "Main page" },
     { path: "/favorites", label: "Liked products" },
   ];

@@ -4,7 +4,8 @@ import { ThemeContext } from "@/ThemeContext/ThemeContext";
 import { RiInstagramFill, RiWhatsappFill } from "react-icons/ri";
 
 const Footer = () => {
-  const { theme } = useContext(ThemeContext); // Передаем нашу тему
+  const { theme } = useContext(ThemeContext); // Получаем нашу тему
+
   return (
     <footer className="footer__container">
       <div>

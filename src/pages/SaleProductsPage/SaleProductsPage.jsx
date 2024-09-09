@@ -18,7 +18,7 @@ const SaleProductsPage = () => {
      (product) => product.discont_price !== null
   ); // Фильтруем наши товары со скидкой
   
-   const crumbs = [
+   const crumbs = [ // Для хлебных крошек
      { path: "/", label: "Main page" },
      { path: "/sale/products/all", label: "All sales" },
    ];

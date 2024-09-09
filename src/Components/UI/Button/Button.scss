@@ -33,7 +33,7 @@
 .size-L {
   padding: 16px 0;
   font-size: nav.$common-text;
-  font-weight: 600;
+  font-weight: nav.$font-weight-semi-bold;
   text-align: center;
 }
 
@@ -49,12 +49,12 @@
 
 .breadcrumbs__last-light{
   color: nav.$font-darkColor;
-  font-weight: 500;
+  font-weight: nav.$font-weight-medium;
 }
 
 .breadcrumbs__last-dark{
   color: nav.$font-lightColor;
-  font-weight: 500;
+  font-weight: nav.$font-weight-medium;
 }
 
 @media (max-width: 725px) {
@@ -62,7 +62,6 @@
     font-size: nav.$burger-menu-s;
   }
 }
-
 
 @media (max-width: 480px) {
   .size-XS{

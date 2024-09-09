@@ -1,4 +1,5 @@
 @use "@/assets/styles/variables.scss" as nav; // импорт для переменных
+
 .product__page-section {
   padding: 40px 40px 0;
   display: flex;
@@ -16,6 +17,7 @@
     border-radius: nav.$radius-big;
     overflow: hidden;
     width: 780px;
+
     img {
       width: 100%;
       object-fit: cover;
@@ -35,7 +37,7 @@
 
       .product__title {
         font-size: nav.$product-page-title-text;
-        font-weight: 700;
+        font-weight: nav.$font-weight-bold;
         max-width: 484px;
       }
 
@@ -74,14 +76,14 @@
         .original__price {
           font-size: nav.$price-text;
           color: nav.$dark-grey;
-          font-weight: 500;
+          font-weight: nav.$font-weight-medium;
           text-decoration: line-through;
         }
       }
 
       .product__price {
         font-size: nav.$product-page-price-text;
-        font-weight: 600;
+        font-weight: nav.$font-weight-semi-bold;
         color: nav.$font-darkColor;
       }
 
@@ -92,7 +94,7 @@
       .discount {
         background-color: nav.$sale-color;
         color: nav.$font-lightColor;
-        font-weight: 600;
+        font-weight: nav.$font-weight-semi-bold;
         font-size: nav.$common-text;
         padding: 4px 8px;
         border-radius: nav.$radius-small;
@@ -129,12 +131,13 @@
         .count {
           padding: 16px 44px;
           font-size: nav.$common-text;
-          font-weight: 600;
+          font-weight: nav.$font-weight-semi-bold;
         }
       }
 
       .counter-dark {
         background: none;
+
         .count {
           color: nav.$font-lightColor;
         }
@@ -157,7 +160,7 @@
 
       .description__title {
         font-size: nav.$common-text;
-        font-weight: 600;
+        font-weight: nav.$font-weight-semi-bold;
       }
 
       .description__body {
@@ -174,11 +177,14 @@
 @media (max-width: 1000px) {
   .product__page-section {
     padding: 40px 20px 0;
+
     .product__page {
       flex-direction: column;
+
       .product__image {
         width: 100%;
       }
+
       .product__info {
         max-width: 100%;
       }
@@ -199,14 +205,17 @@
         .product__pricing {
           .product__price-container {
             gap: 12px;
+
             .original__price {
               font-size: nav.$old-price-xs;
             }
           }
+
           .product__price {
             font-size: nav.$price-s;
           }
         }
+
         .counter__cart {
           flex-direction: column;
           align-items: start;
@@ -222,9 +231,11 @@
       .product__info {
         .product__pricing {
           align-items: end;
+
           .product__price-container {
             flex-direction: column;
           }
+          
           .discount{
             position: relative;
             left: -80px;

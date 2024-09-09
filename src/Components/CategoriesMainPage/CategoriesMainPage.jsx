@@ -8,8 +8,8 @@ import Button from "../UI/Button/Button";
 import { Link } from "react-router-dom";
 
 const CategoriesMainPage = () => {
-  const categories = useSelector((state) => state.products.categories); // выбираем наш массив с категориями
-  const { theme } = useContext(ThemeContext); // Передаем нашу тему
+  const categories = useSelector((state) => state.products.categories); // Выбираем наш массив с категориями
+  const { theme } = useContext(ThemeContext); // Получаем нашу тему
 
   return (
     <section className="categories__section">
@@ -32,7 +32,8 @@ const CategoriesMainPage = () => {
                   theme={theme}
                 />
               ))}
-          <Link to={'/categories/all'} className="adaptive__link">
+          <Link to={"/categories/all"} className="adaptive__link">
+            {/* Отображается только при размере 480px */}
             <Button
               btnColor={"neutral"}
               btnSize={"S"}
