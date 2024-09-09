@@ -6,7 +6,7 @@
 
 - **Макет:** [Figma](https://www.figma.com/design/SDNWLzCWkh9ZXdCpWEaByv/project-frontend?node-id=5251-7386)
 - **Техническое задание (ТЗ):** [Google Docs](https://docs.google.com/document/d/1RU3XZ0tYzUHOfF7ijKEsZjT7f086xNL8-OiYQt-cKFk/edit)
-- **Задеплоенная реализация (render.com):** [Render](#)
+- **Задеплоенная реализация (render.com):** [Vercel](https://garden-products-gamma.vercel.app/)
 
 ### Общее описание
 
