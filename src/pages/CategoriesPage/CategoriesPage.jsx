@@ -16,7 +16,7 @@ const CategoriesPage = () => {
   return (
     <section className="categories__page-section">
       <Breadcrumbs crumbs={crumbs}/> 
-      <h2 className={`categories__section-title title-${theme}`}>Categories</h2>
+      <h2 className={`categories__section-title categories__title-${theme}`}>Categories</h2>
       <div className="categories__content">
         <div className="categories__list">
           {categories.map((category) => (
