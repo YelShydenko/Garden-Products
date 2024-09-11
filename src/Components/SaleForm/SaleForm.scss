@@ -41,10 +41,11 @@
   &-container {
     display: flex;
     gap: 32px;
+    justify-content: space-between;
 
     .sale__form-image__container {
-      max-width: 748px;
-      max-height: 360px;
+      max-width: 100%;
+      max-height: 100%;
 
       .sale__form-image {
         width: 100%;
