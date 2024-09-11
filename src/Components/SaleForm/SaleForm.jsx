@@ -82,7 +82,7 @@ const SaleForm = () => {
                 <p className="error-message">Wrong input. Try again</p>
               )}
               {/* Сообщение при успешном заполнении формы */}
-              {submitMessage && (
+              {!hasErrors && submitMessage && (
                 <p className="submit__message">{submitMessage}</p>
               )}
             </div>
