@@ -15,11 +15,16 @@ export const ThemeProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // получаем тему из localStorage
+    // Получаем тему из localStorage, если она сохранена
     const savedTheme = JSON.parse(localStorage.getItem("theme"));
 
-    setTheme(savedTheme);
-  },[])
+    // Если тема не найдена, устанавливаем светлую тему по умолчанию
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else {
+      setTheme("light");
+    }
+  }, []);
 
   // Обновляем класс body в зависимости от темы, чтобы менять именно цвет body
   useEffect(() => {

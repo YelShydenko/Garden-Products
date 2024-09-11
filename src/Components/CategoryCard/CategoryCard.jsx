@@ -12,7 +12,9 @@ function CategoryCard({ category, theme }) {
           src={`https://exam-server-5c4e.onrender.com${category.image}`}
           alt={category.title}
         />
-        <p className={`categories__item-title ${theme}`}>{category.title}</p>
+        <p className={`categories__item-title categories__item-title__${theme}`}>
+          {category.title}
+        </p>
       </Link>
     </div>
   );

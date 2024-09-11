@@ -19,10 +19,10 @@
       font-weight: nav.$font-weight-medium;
       margin-top: 16px;
       text-align: center;
-    }
 
-    .dark &-title {
-      color: nav.$font-lightColor;
+      &__dark {
+        color: nav.$font-lightColor;
+      }
     }
   }
 }
